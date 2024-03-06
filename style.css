@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/* Change the font to some epic looking theme */
+.head{
+    text-align: center;
+    font-size: 88px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(80, 120, 50);
+    font-style: italic;
+    height: 20vh;
+}
+body{
+    background-color: rgb(233,244,133);
+}
+nav{
+    background-color: rgb(244, 24, 244);
+    font-style: italic;
+}
+ul{
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+
+}
+ul li{
+    list-style: none;
+}
+.dashboard{
+    background-color: blue;
+    height: 85vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    padding: 40px;
+
+}
+.box{
+    background-color: red;
+    width: 70%;
+    height: 70%;
+    padding: 10px;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+
+}
