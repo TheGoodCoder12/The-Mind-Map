@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- someone pls add logo and navigate to home page button as well as logo  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clue Organizer</title>
     <link rel="stylesheet" href="clue.css">
-    <script src="clue.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -15,13 +15,26 @@
     <!-- category selection -->
     <p>Choose from the following categories</p>
 
-    <div class="category_selector">
-        <button class="select_btn">Select</button>
-        <div class="dropdown_menu">
-            <a href="#">Physical Evidence</a>
-            <a href="#">Witness Statement</a>
-            <a href="#">Observation</a>
+    <div class="dropdown">
+        <button class="dropbtn">Select</button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
         </div>
+    </div>
+    <div class="texteditor">
+        <textarea name="content" id="editor" cols="30" rows="10"></textarea>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+    </div>
+    <div class="save">
+        <button>Add to my clue log</button>
     </div>
 </body>
 
