@@ -1,0 +1,16 @@
+body{
+    background-color: brown;
+    color: white;
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 30px;
+}
+.select_btn{
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.dropdown_menu{
+    display: none;
+}

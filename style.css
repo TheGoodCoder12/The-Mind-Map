@@ -4,47 +4,63 @@
 }
 /* Change the font to some epic looking theme */
 .head{
+    font-size: 170px;
+    color: rgb(145, 193, 33);
     text-align: center;
-    font-size: 88px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(80, 120, 50);
+    text-justify: center center;
     font-style: italic;
-    height: 20vh;
+    position: relative;
+    width: 100vw;
+    height: 80vh;
 }
+
 body{
     background-color: rgb(233,244,133);
+    img{
+        height: 100%;
+        width: 100%;
+        filter: blur(0.7px);
+        z-index: -1;
+        position: fixed;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+}
 }
 nav{
-    background-color: rgb(244, 24, 244);
+    background-color: rgb(67, 60, 77);
     font-style: italic;
+    z-index: 20;
+    color: white;
+    font-size: 20px;
+    width: 100vw;
 }
 ul{
-    padding: 12px;
     display: flex;
     justify-content: space-around;
 
 }
 ul li{
     list-style: none;
+    padding: 20px;
 }
 .dashboard{
-    background-color: blue;
+    background-image: url(assets/images/4htr9dyecy411.png);
     height: 85vh;
+    background-size: cover;
     width: 100vw;
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
-    padding: 40px;
-
+    
 }
 .box{
-    background-color: red;
-    width: 70%;
-    height: 70%;
-    padding: 10px;
+    background-image: url(assets/images/download.jpg);
+    padding: 20px;
     border-radius: 30px;
     text-align: center;
     color: white;
     font-size: 25px;
+    margin: 50px;
 
 }
