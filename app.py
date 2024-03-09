@@ -6,6 +6,7 @@
 # Ctrl + Click to open this in browser
 # Everytime you make changes, make sure to refresh the page in browser
 
+# Importing required libraries and functions
 from flask import Flask, render_template, redirect, request, g
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
@@ -108,7 +109,7 @@ def home():
   return render_template("index.html")
 
 
-# Clue tracker
+# Clue Organization
 @app.route("/clue", methods=["GET", "POST"])
 def clue():
   if request.method == "GET":
