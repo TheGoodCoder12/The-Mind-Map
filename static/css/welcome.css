@@ -3,6 +3,10 @@
     margin: 0;
     font-family: 'e epicure Bread';
 }
+.company{
+    letter-spacing: normal;
+    font-size: 11px;
+}
 #icon{
     width: 30px;
     cursor: pointer;
