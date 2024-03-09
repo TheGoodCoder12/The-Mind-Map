@@ -20,6 +20,9 @@
             </div>
         </div>
         <div class="box2">
+            <div class="switch" id="icon">
+                <img src="../static/images/dark_light_switch.svg" alt="">
+            </div>
             <div class="login">
                 Let's solve this mystery, Mr. Holmes
                 <br>
@@ -38,5 +41,18 @@
             </div>
         </div>
     </div>
+    <script>
+        var icon=document.getElementById("icon");
+    
+            icon.onclick=function(){
+                document.body.classList.toggle("light-theme");
+            } 
+            if(document.body.classList.contains("light-theme")){
+                icon.src="../images/light_mode.svg";
+            }
+            else{
+                icon.src="../images/dark_light_switch";
+            }
+    </script>
 </body>
 </html>
