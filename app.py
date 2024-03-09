@@ -108,6 +108,33 @@ def home():
   return render_template("index.html")
 
 
+# Clue tracker
+@app.route("/clue", methods=["GET", "POST"])
+def clue():
+  if request.method == "GET":
+    return render_template("clue.html")
+  else:
+    # Extracting info from the clue tracker form
+    category = request.form.get("category")
+    datetime = request.form.get("datetime")
+    detail = request.form.get("description")
+
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    # Adding data to database
+    cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", category, datetime, detail)
+
+    # Close the cursor as operation is complete
+    cursor.close()
+
+    # Reload page
+    return redirect("/clue")
+
+
 # Run the application
 if __name__ == '__main__':
   app.run(debug=True)
