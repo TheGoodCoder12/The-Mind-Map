@@ -14,7 +14,7 @@ app = Flask(__name__)
 # Set the default route
 @app.route("/")
 def index():
-  return render_template("index.html")
+  return render_template("welcome.html")
 
 # Run the application
 if __name__ == '__main__':
