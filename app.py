@@ -96,6 +96,9 @@ def signup():
     # Adding data to 'users' table in database
     cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", [username, email, hashP])
 
+    # Making a commit so that changes get saved in the database
+    connection.commit()
+
     # Close the cursor as operation is complete
     cursor.close()
 
@@ -129,6 +132,9 @@ def clue():
     # Adding data to database
     cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", [category, datetime, detail])
 
+    # Making a commit so that changes get saved in the database
+    connection.commit()
+
     # Close the cursor as operation is complete
     cursor.close()
 
@@ -156,6 +162,9 @@ def people():
     # Adding database to database
     cursor.execute("INSERT INTO people (name, profession, details) VALUES ();", [name, profession, details])
 
+    # Making a commit so that changes get saved in the database
+    connection.commit()
+    
     # Close the cursor as operation is complete
     cursor.close()
 
