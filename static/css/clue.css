@@ -4,9 +4,43 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-color: rgba(255, 255, 255, );
-    font-family: sans-serif;
+    font-family: 'Crimes Times Six';
     font-style: italic;
     font-size: 30px;
+}
+.date{
+  display: flex;
+  justify-content: space-between;
+}
+.dateIn{
+  display: flex;
+}
+#date{
+  font-size: 20px;
+  height: 50%;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+.save{
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  height: 40%;
+}
+.text{
+  margin-top: 15px;
+  font-size: 40px;
+}
+#time{
+  font-size: 40px;
+}
+h5{
+  margin-right: 20px;
+  color: white;
+}
+#clue{
+  margin-left: 50px;
+  font-size: 23px;
 }
 .dropbtn {
     background-color: #10188db2;
