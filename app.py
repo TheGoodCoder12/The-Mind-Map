@@ -7,6 +7,7 @@
 # Everytime you make changes, make sure to refresh the page in browser
 
 from flask import Flask, render_template, redirect, request
+from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
 
 # Configure application
@@ -39,7 +40,20 @@ def signup():
   if request.method == "GET":
     return render_template("signup.html")
   else:
-    return f"kaam chalu h mommy"
+    # Extract username, email, password from the form
+    username = request.form.get("username")
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    # Hash the password
+    hashP = generate_password_hash(password)
+
+    # Adding data to 'users' table in database
+    cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", username, email, hashP)
+
+    # Close the cursor and connection as one operation is complete
+    cursor.close()
+    connection.close()
 
 
 # Run the application
