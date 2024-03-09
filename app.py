@@ -6,18 +6,19 @@
 # Ctrl + Click to open this in browser
 # Everytime you make changes, make sure to refresh the page in browser
 
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, g
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
 
 # Configure application
 app = Flask(__name__)
 
-# Setting up the connection with database
-connection = sqlite3.connect("mind-map.db")
-
-# Creating a cursor to execute SQL commands
-cursor = connection.cursor()
+# Managing the database connection
+def get_db():
+  db = getattr(g, '_database', None)
+  if db is None:
+    db= g._database = sqlite3.connect("mind-map.db")
+  return db
 
 
 # Set the default route
@@ -45,19 +46,28 @@ def login():
     # Hashing the obtained password
     hashEnterP = generate_password_hash(enterPassword)
 
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
     # Getting user's password from database and checking email id
     cursor.execute("SELECT hashed_password FROM users where email = ?;", email)
     userPassword = cursor.fetchone()
     if not userPassword:  # no password found for entered email id
       print("Please enter a valid registered email id")
+      cursor.close()
       return
     
     # Checking password entered by the user
     if not check_password_hash(hashEnterP, userPassword):
       print("Incorrect password")
+      cursor.close()
       return
     else:
       # Entered email and password is correct, redirect the user to home page
+      cursor.close()
       return redirect("/home")
 
 
@@ -76,21 +86,53 @@ def signup():
     # Hash the password
     hashP = generate_password_hash(password)
 
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
     # Adding data to 'users' table in database
     cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", username, email, hashP)
 
-    # Close the cursor and connection as one operation is complete
+    # Close the cursor as operation is complete
     cursor.close()
-    connection.close()
 
-  # Redirect the user to homepage
-  return redirect("/home")
+    # Redirect the user to homepage
+    return redirect("/home")
 
 
 # Home page
 @app.route("/home")
 def home():
   return render_template("index.html")
+
+
+# Clue tracker
+@app.route("/clue", methods=["GET", "POST"])
+def clue():
+  if request.method == "GET":
+    return render_template("clue.html")
+  else:
+    # Extracting info from the clue tracker form
+    category = request.form.get("category")
+    datetime = request.form.get("datetime")
+    detail = request.form.get("description")
+
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    # Adding data to database
+    cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", category, datetime, detail)
+
+    # Close the cursor as operation is complete
+    cursor.close()
+
+    # Reload page
+    return redirect("/clue")
 
 
 # Run the application
