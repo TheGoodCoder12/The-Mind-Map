@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'e epicure Bread';
+}
+p{
+    font-family: 'algerian';
+    font-size: 15px;
+    letter-spacing: normal;
+}
+:root {
+    --light_mode_body: #db3482;
+    --light_mode_text: #2b4d64;
+    --dark_mode_body: rgb(39, 8, 8);
+    --dark_mode_body2: rgba(96, 17, 17, 0.832);
+    --dark_mode_text: rgb(255, 144, 75);
+}
+.boxes{
+    display: flex;
+    letter-spacing: 25px;
+    font-style: italic;
+}
+.box1{
+    background-color: var(--dark_mode_body);
+    color: var(--dark_mode_text);
+    width: 70vw;
+    font-size: 80px;
+
+}
+.box2{
+    background-color: var(--dark_mode_body2);
+    width: 30vw;
+    color: var(--dark_mode_text);
+}
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+nav{
+    padding: 6%;
+}
+
+.login{
+    font-size: 30px;
+    letter-spacing: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50%;
+}
+.btns{
+    border: none;
+    border-radius: 3px;
+    font-size: 22px;
+    padding: 20%;
+    margin: 20%;
+    color: var(--light_mode_text);
+    background-color: var(--light_mode_body);
+}

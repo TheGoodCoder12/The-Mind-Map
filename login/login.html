@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Page</title>
+    <link rel="stylesheet" href="login.css">
+    <meta name="description" content="This is the login-signup page of our website">
+</head>
+<body>
+    <div class="container">
+        <!-- terminology idea -->
+        <h2>Login</h2>
+        <form action="#" method="post">
+            <!-- form: collects user data, action=#: represents direct the collected info to the same webpage,  -->
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="switch-form">
+            <p>Don't have an account? <a href="#signup">Sign up</a></p>
+        </div>
+    </div>
+
+    <div class="container" id="signup" style="display: none;">
+        <h2>Sign Up</h2>
+        <form action="#" method="post">
+            <div>
+                <label for="new_username">Username:</label>
+                <input type="text" id="new_username" name="new_username" required>
+            </div>
+            <div>
+                <label for="new_password">Password:</label>
+                <input type="password" id="new_password" name="new_password" required>
+            </div>
+            <input type="submit" value="Sign Up">
+        </form>
+        <div class="switch-form">
+            <p>Already have an account? <a href="#">Login</a></p>
+        </div>
+    </div>
+       
+</body>
+</html>
