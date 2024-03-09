@@ -84,6 +84,7 @@ def signup():
     connection.close()
 
 
+# Home page
 @app.route("/index")
 def index():
   return render_template("index.html")
