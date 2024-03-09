@@ -25,7 +25,7 @@ def login():
     return f"Kaam pura hua nhi abhi tak"
 
 # Sign Up
-@app.route("/signup")
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
   if request.method == "GET":
     return render_template("signup.html")
