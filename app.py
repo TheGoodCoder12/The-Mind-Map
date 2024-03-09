@@ -22,7 +22,7 @@ cursor = connection.cursor()
 
 # Set the default route
 @app.route("/")
-def index():
+def welcome():
   return render_template("welcome.html")
 
 
