@@ -115,7 +115,7 @@ def clue():
   if request.method == "GET":
     return render_template("clue.html")
   else:
-    # Extracting info from the clue tracker form
+    # Extracting info from the clue organization form
     category = request.form.get("category")
     datetime = request.form.get("datetime")
     detail = request.form.get("description")
@@ -134,6 +134,33 @@ def clue():
 
     # Reload page
     return redirect("/clue")
+
+
+# People tracker
+@app.route("/people")
+def people():
+  if request.method == "GET":
+    return render_template("ppl.html")
+  else:
+    # Extracting info from the people tracker form
+    name = request.form.get("name")
+    profession = request.form.get("profession")
+    details = request.form.get("details")
+
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    # Adding database to database
+    cursor.execute("INSERT INTO people (name, profession, details) VALUES ();", name, profession, details)
+
+    # Close the cursor as operation is complete
+    cursor.close()
+
+    # Reload page
+    return redirect("/people")
 
 
 # Run the application
