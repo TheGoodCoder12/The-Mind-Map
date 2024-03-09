@@ -25,13 +25,41 @@ cursor = connection.cursor()
 def index():
   return render_template("welcome.html")
 
+
 # Login
 @app.route("/login", methods=["GET", "POST"])
 def login():
+  # Checking whether user clicked on a link or submitted login form
   if request.method == "GET":
     return render_template("login.html")
   else:
-    return f"Kaam pura hua nhi abhi tak"
+    # Extract email, password from the login form
+    email = request.form.get("email")
+    enterPassword = request.form.get("password")
+
+    # Checking if user left any field blank
+    if not email or not enterPassword:
+      print("Please enter all required fields to proceed")
+      return
+    
+    # Hashing the obtained password
+    hashEnterP = generate_password_hash(enterPassword)
+
+    # Getting user's password from database and checking email id
+    cursor.execute("SELECT hashed_password FROM users where email = ?;", email)
+    userPassword = cursor.fetchone()
+    if not userPassword:  # no password found for entered email id
+      print("Please enter a valid registered email id")
+      return
+    
+    # Checking password entered by the user
+    if not check_password_hash(hashEnterP, userPassword):
+      print("Incorrect password")
+      return
+    else:
+      # Entered email and password is correct, redirect the user to home page
+      return redirect("/index")
+
 
 # Sign Up
 @app.route("/signup", methods=["GET", "POST"])
@@ -40,7 +68,7 @@ def signup():
   if request.method == "GET":
     return render_template("signup.html")
   else:
-    # Extract username, email, password from the form
+    # Extract username, email, password from the sign up form
     username = request.form.get("username")
     email = request.form.get("email")
     password = request.form.get("password")
