@@ -7,9 +7,17 @@
 # Everytime you make changes, make sure to refresh the page in browser
 
 from flask import Flask, render_template, redirect, request
+import sqlite3
 
 # Configure application
 app = Flask(__name__)
+
+# Setting up the connection with database
+connection = sqlite3.connect("mind-map.db")
+
+# Creating a cursor to execute SQL commands
+cursor = connection.cursor()
+
 
 # Set the default route
 @app.route("/")
@@ -27,10 +35,12 @@ def login():
 # Sign Up
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+  # Checking whether user clicked on a link or submitted sign up form
   if request.method == "GET":
     return render_template("signup.html")
   else:
-    return f"Kaam chalu h mommy"
+    return f"kaam chalu h mommy"
+
 
 # Run the application
 if __name__ == '__main__':
