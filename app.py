@@ -54,7 +54,7 @@ def login():
     cursor = connection.cursor()
 
     # Getting user's password from database and checking email id
-    cursor.execute("SELECT hashed_password FROM users where email = ?;", email)
+    cursor.execute("SELECT hashed_password FROM users where email = ?;", [email])
     userPassword = cursor.fetchone()
     if not userPassword:  # no password found for entered email id
       print("Please enter a valid registered email id")
@@ -164,7 +164,7 @@ def people():
 
     # Making a commit so that changes get saved in the database
     connection.commit()
-    
+
     # Close the cursor as operation is complete
     cursor.close()
 
@@ -172,6 +172,6 @@ def people():
     return redirect("/people")
 
 
-# Run the application
+# Run the application+
 if __name__ == '__main__':
   app.run(debug=True)
