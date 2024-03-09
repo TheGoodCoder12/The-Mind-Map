@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- someone pls add logo and navigate to home page button as well as logo  -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,32 +11,45 @@
 </head>
 
 <body>
-    <div class="welcome">Welcome Mr. Holmes, </div>
-    <div class="heading">Write your clues here: </div>
-    <!-- category selection -->
-    <p>Choose from the following categories</p>
-
-    <div class="dropdown">
-        <button class="dropbtn">Select</button>
-        <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+    <div class="date">
+        <div class="welcome font">Welcome Mr. Holmes,
+        </div>
+        <div class="dateIn">
+            <h5>Select the date: </h5>
+            <input type="date" id="date">
         </div>
     </div>
+    <div class="heading font">Write your clues here: </div>
+    <!-- category selection -->
+    <p>Choose from the following categories:</p>
+    <select id="clue">
+        <option value="person">Person</option>
+        <option value="photo">Photo</option>
+        <option value="video">Video</option>
+        <option value="footprints">Footprints</option>
+        <option value="object">Object</option>
+    </select>
     <div class="texteditor">
         <textarea name="content" id="editor" cols="30" rows="10"></textarea>
-        <script>
-            ClassicEditor
-                .create(document.querySelector('#editor'))
-                .catch(error => {
-                    console.error(error);
-                });
-        </script>
+        <div class="save">
+            <div class="text">
+                Enter the time:
+                <br>
+                <input type="time" id="time">
+            </div>
+            <div class="btn">
+                <button>Add to my clue log</button>
+            </div>
+        </div>
     </div>
-    <div class="save">
-        <button>Add to my clue log</button>
     </div>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 </body>
 
 </html>
