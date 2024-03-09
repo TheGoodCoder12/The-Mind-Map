@@ -6,7 +6,7 @@
 # Ctrl + Click to open this in browser
 # Everytime you make changes, make sure to refresh the page in browser
 
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 
 # Configure application
 app = Flask(__name__)
@@ -19,14 +19,18 @@ def index():
 # Login
 @app.route("/login", methods=["GET", "POST"])
 def login():
-  return render_template("login.html")
-
+  if request.method == "GET":
+    return render_template("login.html")
+  else:
+    return f"Kaam pura hua nhi abhi tak"
 
 # Sign Up
 @app.route("/signup")
 def signup():
-  return render_template("signup.html")
-
+  if request.method == "GET":
+    return render_template("signup.html")
+  else:
+    return f"Kaam chalu h mommy"
 
 # Run the application
 if __name__ == '__main__':
