@@ -94,7 +94,7 @@ def signup():
     cursor = connection.cursor()
 
     # Adding data to 'users' table in database
-    cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", username, email, hashP)
+    cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", [username, email, hashP])
 
     # Close the cursor as operation is complete
     cursor.close()
@@ -127,7 +127,7 @@ def clue():
     cursor = connection.cursor()
 
     # Adding data to database
-    cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", category, datetime, detail)
+    cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", [category, datetime, detail])
 
     # Close the cursor as operation is complete
     cursor.close()
@@ -154,7 +154,7 @@ def people():
     cursor = connection.cursor()
 
     # Adding database to database
-    cursor.execute("INSERT INTO people (name, profession, details) VALUES ();", name, profession, details)
+    cursor.execute("INSERT INTO people (name, profession, details) VALUES ();", [name, profession, details])
 
     # Close the cursor as operation is complete
     cursor.close()
