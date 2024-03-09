@@ -37,6 +37,9 @@ p{
     color: var(--dark_mode_text);
     width: 70vw;
     font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 .box2{
@@ -58,7 +61,6 @@ nav{
     font-size: 30px;
     letter-spacing: 12px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 50%;
@@ -71,4 +73,10 @@ nav{
     margin: 20%;
     color: var(--dark_mode_text);
     background-color: var(--dark_mode_body);
+}
+.ls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

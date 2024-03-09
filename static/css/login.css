@@ -2,7 +2,15 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #b82727;
+    background-image: url(../images/light_img.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.heading{
+    font-family: 'Crimes Times Six';
+    color: white;
+    font-size: 85px;
+    margin-top: 5.5%;
 }
 .container {
     max-width: 400px;
