@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-  </head>
-  <body>
-    <p>Signup page banao</p>
-  </body>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="container" id="signup">
+        <h2>Sign Up</h2>
+        <form action="#" method="post">
+            <div>
+                <label for="new_username">Username:</label>
+                <input type="text" id="new_username" name="new_username" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="create_password">Create Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password_new" id="password_new" name="password_new" required>
+            </div>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</body>
 </html>
