@@ -58,7 +58,7 @@ def login():
       return
     else:
       # Entered email and password is correct, redirect the user to home page
-      return redirect("/index")
+      return redirect("/home")
 
 
 # Sign Up
@@ -83,10 +83,13 @@ def signup():
     cursor.close()
     connection.close()
 
+  # Redirect the user to homepage
+  return redirect("/home")
+
 
 # Home page
-@app.route("/index")
-def index():
+@app.route("/home")
+def home():
   return render_template("index.html")
 
 
