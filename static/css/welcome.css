@@ -1,7 +1,7 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: 'e epicure Bread';
+    font-family: 'Crimes Times Six';
 }
 .company{
     letter-spacing: normal;
@@ -15,16 +15,16 @@ p{
     font-family: 'algerian';
     font-size: 15px;
     letter-spacing: normal;
-}
+} 
 :root {
-    --dark_mode_body: rgb(39, 8, 8);
-    --dark_mode_body2: rgba(96, 17, 17, 0.832);
-    --dark_mode_text: rgb(255, 144, 75);
+    --dark_mode_body: rgba(255, 145, 0, 0.751);
+    --dark_mode_body2: rgba(232, 220, 220, 0.832);
+    --dark_mode_text: rgba(0, 3, 43, 0.913);
 }
 .light-theme{
-    --dark_mode_body: #db3482;
-    --dark_mode_body2: rgba(92, 125, 233, 0.832);
-    --dark_mode_text: #2b4d64;
+    --dark_mode_body:  rgba(255, 145, 0, 0.753);
+    --dark_mode_body2: rgba(39, 34, 34, 0.832);
+    --dark_mode_text: #dad1d1;
 
 }
 .boxes{
