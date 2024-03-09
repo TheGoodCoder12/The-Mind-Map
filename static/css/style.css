@@ -45,7 +45,7 @@ ul li{
     padding: 20px;
 }
 .dashboard{
-    background-image: url(assets/images/4htr9dyecy411.png);
+    background-image: url(../images/dashboard.png);
     height: 85vh;
     background-size: cover;
     width: 100vw;
@@ -55,7 +55,7 @@ ul li{
     
 }
 .box{
-    background-image: url(assets/images/download.jpg);
+    background-image: url(../images/box.jpg);
     padding: 20px;
     border-radius: 30px;
     text-align: center;
