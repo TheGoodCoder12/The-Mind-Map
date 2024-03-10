@@ -6,6 +6,7 @@
 # Ctrl + Click to open this in browser
 # Everytime you make changes, make sure to refresh the page in browser
 
+# Importing required libraries and functions
 from flask import Flask, render_template, redirect, request, g
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
@@ -40,8 +41,7 @@ def login():
 
     # Checking if user left any field blank
     if not email or not enterPassword:
-      print("Please enter all required fields to proceed")
-      return
+      return f"Please enter all required fields to proceed"
     
     # Hashing the obtained password
     hashEnterP = generate_password_hash(enterPassword)
@@ -53,18 +53,16 @@ def login():
     cursor = connection.cursor()
 
     # Getting user's password from database and checking email id
-    cursor.execute("SELECT hashed_password FROM users where email = ?;", email)
+    cursor.execute("SELECT hashed_password FROM users where email = ?;", [email])
     userPassword = cursor.fetchone()
     if not userPassword:  # no password found for entered email id
-      print("Please enter a valid registered email id")
       cursor.close()
-      return
+      return f"Please enter a valid registered email id"
     
     # Checking password entered by the user
-    if not check_password_hash(hashEnterP, userPassword):
-      print("Incorrect password")
+    if not check_password_hash(hashEnterP, userPassword[0]):
       cursor.close()
-      return
+      return f"Incorrect password"
     else:
       # Entered email and password is correct, redirect the user to home page
       cursor.close()
@@ -93,7 +91,10 @@ def signup():
     cursor = connection.cursor()
 
     # Adding data to 'users' table in database
-    cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", username, email, hashP)
+    cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", [username, email, hashP])
+
+    # Making a commit so that changes get saved in the database
+    connection.commit()
 
     # Close the cursor as operation is complete
     cursor.close()
@@ -108,13 +109,13 @@ def home():
   return render_template("index.html")
 
 
-# Clue tracker
+# Clue Organization
 @app.route("/clue", methods=["GET", "POST"])
 def clue():
   if request.method == "GET":
     return render_template("clue.html")
   else:
-    # Extracting info from the clue tracker form
+    # Extracting info from the clue organization form
     category = request.form.get("category")
     datetime = request.form.get("datetime")
     detail = request.form.get("description")
@@ -126,7 +127,10 @@ def clue():
     cursor = connection.cursor()
 
     # Adding data to database
-    cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", category, datetime, detail)
+    cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", [category, datetime, detail])
+
+    # Making a commit so that changes get saved in the database
+    connection.commit()
 
     # Close the cursor as operation is complete
     cursor.close()
@@ -135,6 +139,36 @@ def clue():
     return redirect("/clue")
 
 
-# Run the application
+# People tracker
+@app.route("/people")
+def people():
+  if request.method == "GET":
+    return render_template("ppl.html")
+  else:
+    # Extracting info from the people tracker form
+    name = request.form.get("name")
+    profession = request.form.get("profession")
+    details = request.form.get("details")
+
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    # Adding database to database
+    cursor.execute("INSERT INTO people (name, profession, details) VALUES ();", [name, profession, details])
+
+    # Making a commit so that changes get saved in the database
+    connection.commit()
+
+    # Close the cursor as operation is complete
+    cursor.close()
+
+    # Reload page
+    return redirect("/people")
+
+
+# Run the application+
 if __name__ == '__main__':
   app.run(debug=True)
