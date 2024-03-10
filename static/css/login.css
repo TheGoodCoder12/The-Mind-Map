@@ -1,14 +1,26 @@
+:root{
+    --background-color:rgba(255, 246, 226, 0.8);
+    --text: rgb(255, 170, 0);
+    --submit-bg: rgb(255, 170, 0);
+    --submit_text:white;
+}
+.dark-theme{
+    --background-color: rgba(19, 10, 0, 0.8);
+    --text: rgba(255, 145, 0, 0.947);
+    --submit-bg: rgba(255, 145, 0, 0.947);
+    --submit_text:rgb(0, 0, 0);
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(../images/light_img.jpeg);
+    background-image: url(../images/dark_img.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 .heading{
     font-family: 'Crimes Times Six';
-    color: rgb(46, 16, 3);
+    color:  rgb(255, 255, 255);
     font-size: 85px;
     margin-top: 5.5%;
 }
@@ -16,13 +28,14 @@ body {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background-color: rgba(255, 246, 226, 0.909);
+  
     border-radius: 5px;
-    color: rgb(255, 166, 0);
+    background-color: var(--background-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 h2 {
     text-align: center;
+    color: var(--text);
 }
 input[type="text"], input[type="password"], input[type="submit"] {
     width: 100%;
@@ -30,12 +43,13 @@ input[type="text"], input[type="password"], input[type="submit"] {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid rgba(255, 145, 0, 0.751);
+    color: var(--text);
     border-radius: 4px;
     box-sizing: border-box;
 }
 input[type="submit"] {
-    background-color:   rgba(255, 145, 0, 0.751);
-    color: white;
+    background-color: var(--submit-bg);
+    color: var(--submit_text);
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
