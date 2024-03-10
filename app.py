@@ -60,7 +60,7 @@ def login():
       return f"Please enter a valid registered email id"
     
     # Checking password entered by the user
-    if not check_password_hash(hashEnterP, userPassword[0]):
+    if not check_password_hash(userPassword[0], enterPassword):
       cursor.close()
       return f"Incorrect password"
     else:
@@ -100,6 +100,7 @@ def signup():
     cursor.close()
 
     # Redirect the user to homepage
+    print(f"entered email is {email}, entered password is {password}, hashP = {hashP}")
     return redirect("/home")
 
 
