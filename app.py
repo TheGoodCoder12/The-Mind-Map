@@ -41,8 +41,7 @@ def login():
 
     # Checking if user left any field blank
     if not email or not enterPassword:
-      print("Please enter all required fields to proceed")
-      return
+      return f"Please enter all required fields to proceed"
     
     # Hashing the obtained password
     hashEnterP = generate_password_hash(enterPassword)
@@ -57,15 +56,13 @@ def login():
     cursor.execute("SELECT hashed_password FROM users where email = ?;", [email])
     userPassword = cursor.fetchone()
     if not userPassword:  # no password found for entered email id
-      print("Please enter a valid registered email id")
       cursor.close()
-      return
+      return f"Please enter a valid registered email id"
     
     # Checking password entered by the user
-    if not check_password_hash(hashEnterP, userPassword):
-      print("Incorrect password")
+    if not check_password_hash(hashEnterP, userPassword[0]):
       cursor.close()
-      return
+      return f"Incorrect password"
     else:
       # Entered email and password is correct, redirect the user to home page
       cursor.close()
