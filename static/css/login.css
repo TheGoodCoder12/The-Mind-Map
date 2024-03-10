@@ -18,7 +18,7 @@ body {
     padding: 20px;
     background-color: rgba(255, 246, 226, 0.909);
     border-radius: 5px;
-    color: rgb(255, 170, 0);
+    color: rgb(255, 166, 0);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 h2 {
@@ -44,7 +44,7 @@ input[type="submit"] {
     width: 100%;
 }
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 .container form {
     padding: 20px;
