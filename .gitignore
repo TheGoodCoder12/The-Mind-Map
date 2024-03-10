@@ -4,4 +4,8 @@ test.html
 /login
 ../.venv
 >>>>>>> 11541fd7e7e6e0febe4a7cbee30f1978098f203b
+<<<<<<< HEAD
+test.css
+=======
 mind-map.db
+>>>>>>> 1bd705c42940ce76fbd91c982c8aad642705f791
