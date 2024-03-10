@@ -8,36 +8,46 @@
     <title>welcome</title>
     <link rel="stylesheet" href="../static/css/welcome.css">
 </head>
-
+<!-- profile edition -->
+<!-- log out -->
 <body>
     <div class="boxes">
         <div class="box1">
+            <nav class="heading">
+                <b>
+                    THE MIND MAP
+                </b>
+            </nav>
             <div class="name">
                 Let's solve this mystery, Mr. Holmes
             </div>
         </div>
         <div class="box2">
-            <div class="ls">
-                <div class="switch" id="icon">
-                    <img src="../static/images/dark_light_switch.svg" alt="">
-                </div>
+            <div class="newflex">
                 <div class="start">
-                    Let's get you started
-                </div>
-                <div class="login">
-                    <form action="/login" method="get">
-                        <button class="btn1 btns" type="submit">
-                            Login
-                        </button>
-                    </form>
-                    <br>
-                    <form action="/signup" method="get">
-                        <button class="btn1 btns" type="submit">
-                            Sign Up
-                        </button>
-                    </form>
+                    <nav class="text">
+                        Let's get you started
+                    </nav>
+                    <div class="login">
+                        <form action="/login" method="get">
+                            <button class="btn1 btns" type="submit">
+                                Login
+                            </button>
+                        </form>
+                        <br>
+                        <form action="/signup" method="get">
+                            <button class="btn1 btns" type="submit">
+                                Sign Up
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <div class="switch" id="icon">
+                <img src="../static/images/dark_light_switch.svg" alt="">
+            </div>
+            <!-- <div class="ls">
+            </div> -->
         </div>
     </div>
     <script>
