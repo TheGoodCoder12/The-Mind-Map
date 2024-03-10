@@ -3,6 +3,43 @@
     margin: 0;
     font-family: 'Crimes Times Six';
 }
+@media only screen and (max-width: 768px) {
+    .boxes {
+        flex-direction: column; 
+        width: 100vw;
+    }
+    .box1 {
+        text-align: center;
+
+    }
+
+    .box2 {
+        display: flex;
+        width: 100vw;
+    }
+
+    .name {
+        font-size: 40px;
+    }
+
+    .start {
+        font-size: 40px;
+    }
+
+    .login {
+        font-size: 20px;
+        letter-spacing: 8px;
+        padding-top: 40px;
+    }
+
+    .btns {
+        font-size: 18px;
+        padding: 15px;
+        margin: 10px;
+    }
+}
+
+
 .company{
     letter-spacing: normal;
     font-size: 11px;
@@ -31,48 +68,64 @@ p{
     display: flex;
     letter-spacing: 25px;
     font-style: italic;
+    height: 100vh;
+    position: absolute;
 }
 .box1{
     background-color: var(--dark_mode_body);
     color: var(--dark_mode_text);
-    width: 70vw;
+    width: 60vw;
     font-size: 80px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.switch{
+    margin-right: 35px;
+}
+.newflex{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 .box2{
     background-color: var(--dark_mode_body2);
-    width: 30vw;
+    width: 40vw;
     color: var(--dark_mode_text);
+    display: flex;
 }
 .name{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: 60px;
 }
 nav{
     padding: 6%;
 }
+.start{
+    font-size: 55px;
 
+}
 .login{
     font-size: 30px;
     letter-spacing: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50%;
+    padding-top: 80px;
 }
 .btns{
     border: none;
     border-radius: 3px;
     font-size: 22px;
-    padding: 20%;
-    margin: 20%;
     color: var(--dark_mode_text);
     background-color: var(--dark_mode_body);
+        padding: 30px;
+        margin: 20px;
 }
 .ls{
     display: flex;
