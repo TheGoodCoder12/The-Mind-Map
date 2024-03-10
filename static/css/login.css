@@ -16,9 +16,9 @@ body {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #723b00;
+    background-color: rgba(255, 246, 226, 0.909);
     border-radius: 5px;
-    color: white;
+    color: rgb(255, 170, 0);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 h2 {
@@ -29,12 +29,12 @@ input[type="text"], input[type="password"], input[type="submit"] {
     padding: 10px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(255, 145, 0, 0.751);
     border-radius: 4px;
     box-sizing: border-box;
 }
 input[type="submit"] {
-    background-color: #ff4000;
+    background-color:   rgba(255, 145, 0, 0.751);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
