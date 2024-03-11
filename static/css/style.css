@@ -14,17 +14,16 @@
     }
 }
 :root{
-    --nav:rgb(103, 18, 221);
-    --nav_text:white;
-    --separator:rgb(99, 98, 98);
-    --section:rgb(66, 192, 194);
+    --nav:rgb(252, 241, 187);
+    --nav_text:rgb(86, 68, 3);
+    --separator:rgb(225, 185, 2);
+    --section:rgb(225, 185, 2);
 }
 .dark-theme{
-    --nav:rgb(12, 54, 43);
-    --nav_text:rgb(187, 0, 0);
-    --separator:rgb(255, 0, 212);
-    --section:rgb(255, 255, 8);
-
+    --nav:rgb(41, 39, 32);
+    --nav_text:rgb(254, 238, 206);
+    --separator:rgba(148, 121, 0, 0.979);
+    --section:rgba(148, 121, 0, 0.979);
 }
 /* Change the font to some epic looking theme */
 nav{
@@ -63,7 +62,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
+    height: 93vh;
     position: relative;
     padding: 30px;
     font-size: 50px;
@@ -75,6 +74,11 @@ section {
     align-items: center;
     width: 50%;
     padding: 50px;
+}
+.description{
+    font-size: 40px;
+    font-family: 'Freestyle Script';
+    
 }
 
 .img{
