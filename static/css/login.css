@@ -1,7 +1,7 @@
 :root{
-    --background-color:rgba(255, 246, 226, 0.8);
-    --text: rgb(255, 170, 0);
-    --submit-bg: rgb(255, 170, 0);
+    --background-color:rgba(245, 239, 225, 0.89);
+    --text:rgb(255, 162, 0);
+    --submit-bg: rgb(255, 162, 0);
     --submit_text:white;
     --form-text:black;
 }
