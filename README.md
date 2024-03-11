@@ -19,5 +19,4 @@ Timeline Visualization<br>
     -Theft discovery<br>
     -Interactions with individuals<br>
     -New clue discoveries<br>
-Search<br>
-Relationship Mapping
+Search

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- help support -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The-Mind-Map</title>
@@ -9,8 +10,6 @@
     <meta name="description" content="This is a The-Mind-Map to help Sherlock Holmes organize his clues">
 </head>
 <body>
-    <img src="../static/images/index.jpg" alt="">
-    <div class="head">The-Mind-Map</div>
     <nav>
         <ul>
             <!-- change these names to some epic unique names -->
@@ -18,19 +17,93 @@
             <li>People Tracker</li>
             <li>Timeline</li>
             <li>Search</li>
-            <li>Relationship Mapper</li>      
-            <li>Dark Mode</li>
+            <li>Profile</li>
+            <li>Log Out</li>
+            <li>
+                <div class="switch" id="icon">
+                    <img src="../static/images/dark_light_switch.svg" alt="">
+                </div>
+            </li>
         </ul>
     </nav>
-    <div class="dashboard">
-        <!-- add some creativity -->
-        <div class="info box">Profile</div>
-        <div class="clues box">Clues</div>
-        <div class="timeline box">Timeline</div>
-        <div class="relationsip box">Relationship</div>
-        <div class="NewIdea box">New Idea</div>
-        <div class="todoList box">To-do List</div>
+        <section>
+            <div class="desc">
+                <div class="heading">
+                    Clue Organizer
+                </div>
+                <div class="description">
+                    Yahan Kuch sexy sa description daal do
+                </div>
+            </div>
+            <div class="img">
+                <img src="../static/images/ppl.jpg">
+            </div>
+        </section>
+        <div class="separator">
+        </div>
+        <section>
+            <div class="img">
+                <img src="../static/images/ppl.jpg">
+            </div>
+            <div class="desc">
+                <div class="heading">
+                    People Tracker
+                </div>
+                <div class="description">
+                    Yahan Kuch sexy sa description daal do
+                </div>
+            </div>
+        </section>
+        <div class="separator">
+        </div>
+        <section>
+            <div class="desc">
+                <div class="heading">
+                    Timeline
+                </div>
+                <div class="description">
+                    Yahan Kuch sexy sa description daal do
+                </div>
+            </div>
+            <div class="img">
+                <img src="../static/images/ppl.jpg">
+            </div>
+        </section>
+        <div class="separator">
+        </div>
     </div>
-</img>
+    
+        <section class="first">
+            <div class="img">
+                <img src="../static/images/ppl.jpg">
+            </div>
+            <div class="desc">
+                <div class="heading">
+                    Search
+                </div>
+                <div class="description">
+                    Yahan Kuch sexy sa description daal do
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        var icon = document.getElementById("icon");
+
+        icon.onclick = function () {
+            document.body.classList.toggle("dark-theme");
+
+            // Access the image inside the icon div
+            var img = icon.querySelector('img');
+
+            // Check if body has light-theme class
+            if (document.body.classList.contains("dark-theme")) {
+                img.src = "../static/images/light_mode.svg"; // Change the source to light mode image
+            } else {
+                img.src = "../static/images/dark_light_switch.svg"; // Change the source to dark mode image
+            }
+        }
+
+    </script>
 </body>
 </html>
