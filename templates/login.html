@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,18 @@
     <link rel="stylesheet" href="../static/css/login.css">
 
 </head>
+
 <body>
-    <div class="heading">
-       <center>
-        THE MIND MAP
-       </center> 
-    </div>
-    <div class="box1">
-        <div class="switch" id="icon">
-            <img src="../static/images/dark_light_switch.svg" alt="">
+    <div class="box_main">
+        <div class="heading">
+            <center>
+                THE MIND MAP
+            </center>
+        </div>
+        <div class="box1">
+            <div class="switch" id="icon">
+                <img src="../static/images/dark_light_switch.svg" alt="">
+            </div>
         </div>
     </div>
     <div class="container">
@@ -23,7 +27,7 @@
         <form action="/login" method="post">
             <div>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="text" id="email" name="email" required>
             </div>
             <div>
                 <label for="password">Password:</label>
@@ -32,6 +36,7 @@
             <input type="submit" value="Login">
         </form>
     </div>
+    
     <script>
         var icon = document.getElementById("icon");
 
@@ -51,4 +56,5 @@
 
     </script>
 </body>
+
 </html>

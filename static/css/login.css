@@ -3,19 +3,30 @@
     --text: rgb(255, 170, 0);
     --submit-bg: rgb(255, 170, 0);
     --submit_text:white;
+    --form-text:black;
 }
 .dark-theme{
     --background-color: rgba(19, 10, 0, 0.8);
     --text: rgba(255, 145, 0, 0.947);
     --submit-bg: rgba(255, 145, 0, 0.947);
     --submit_text:rgb(0, 0, 0);
+    --form-text:white;
+}
+.box_main{
+    display: flex;
+    justify-content: center;
+}
+.box1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-image: url(../images/dark_img.jpeg);
-    background-repeat: no-repeat;
+    background-repeat: round;
     background-size: cover;
 }
 .heading{
@@ -56,6 +67,9 @@ input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+}
+form{
+    color: var(--form-text);
 }
 input[type="submit"]:hover {
     background-color: #0056b3;
