@@ -10,6 +10,7 @@
 from flask import Flask, render_template, redirect, request, g
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
+from extra import isStrong
 
 # Configure application
 app = Flask(__name__)
@@ -93,9 +94,8 @@ def signup():
       return f"Password should be atleast 8 characters long"
     
     # Checking if password is strong enough - check4
-    #
-    # work to be done
-    #
+    if not isStrong(password):
+      return f"Password should contain atleast one uppercase, one lowercase, one digit and one special character"
 
     # Obtain database connection
     connection = get_db()
@@ -103,7 +103,7 @@ def signup():
     # Creating a cursor to execute SQL commands
     cursor = connection.cursor()
 
-    # Checking if email or username id of user already exists - check5
+    # Checking if email or username of user already exists - check5
     data = cursor.execute("SELECT email, username FROM users;")
     for EMAIL, USERNAME in data:
       if EMAIL == email:
