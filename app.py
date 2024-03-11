@@ -103,7 +103,7 @@ def signup():
     # Creating a cursor to execute SQL commands
     cursor = connection.cursor()
 
-    # Checking if email or username id of user already exists - check5
+    # Checking if email or username of user already exists - check5
     data = cursor.execute("SELECT email, username FROM users;")
     for EMAIL, USERNAME in data:
       if EMAIL == email:
