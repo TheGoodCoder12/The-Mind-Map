@@ -80,15 +80,39 @@ def signup():
     username = request.form.get("username")
     email = request.form.get("email")
     password = request.form.get("password")
+    confirmP = request.form.get("confirmP")
 
-    # Hash the password
-    hashP = generate_password_hash(password)
+    # Checking if any field is empty - check1
+    if not username or not email or not password or not confirmP:
+      return f"Please enter all required fields"
+    # Checking if password and confirmed password match - check2
+    elif confirmP != password:
+      return f"New password and confirmed password don't match"
+    # Checking if password is atleast 8 characters long - check3
+    elif len(password) < 8:
+      return f"Password should be atleast 8 characters long"
+    
+    # Checking if password is strong enough - check4
+    #
+    # work to be done
+    #
 
     # Obtain database connection
     connection = get_db()
 
     # Creating a cursor to execute SQL commands
     cursor = connection.cursor()
+
+    # Checking if email or username id of user already exists - check5
+    data = cursor.execute("SELECT email, username FROM users;")
+    for EMAIL, USERNAME in data:
+      if EMAIL == email:
+        return f"Email id already exists"
+      elif USERNAME == username:
+        return f"Username already exists, please choose another"
+
+    # Hash the password
+    hashP = generate_password_hash(password)
 
     # Adding data to 'users' table in database
     cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?);", [username, email, hashP])
