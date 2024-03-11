@@ -1,8 +1,8 @@
 :root{
     --background-color:rgba(245, 239, 225, 0.89);
-    --text:rgb(255, 162, 0);
+    --text:black;
     --submit-bg: rgb(255, 162, 0);
-    --submit_text:white;
+    --submit_text:black;
     --form-text:black;
 }
 .dark-theme{
