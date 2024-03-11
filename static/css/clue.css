@@ -1,19 +1,47 @@
+:root{
+  --bgcolor:yellow;
+  --text:black;
+}
+.dark-theme{
+  --bgcolor:rgb(8, 97, 44);
+  --text:rgb(255, 255, 255);
+
+}
+@media only screen and (max-width: 768px) {
+  body{
+    text-align: center;
+  }
+  .date{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .save{
+    display: flex;
+    flex-direction: column;
+  }
+}
 body{
-    background-image: url(../images/clue.jpg);
-    color: white;
+    color: var(--text);
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: rgba(255, 255, 255, );
+    background-color: var(--bgcolor);
     font-family: 'Crimes Times Six';
     font-style: italic;
     font-size: 30px;
+    padding: 20px;
 }
 .date{
   display: flex;
   justify-content: space-between;
+  font-size: 15px;
 }
 .dateIn{
   display: flex;
+  flex-direction: column;
+  font-size: 23px;
+
 }
 #date{
   font-size: 20px;
@@ -23,20 +51,19 @@ body{
 }
 .save{
   display: flex;
-  color: white;
   justify-content: space-between;
   height: 40%;
+  align-items: center;
 }
 .text{
   margin-top: 15px;
-  font-size: 40px;
+  font-size: 23px;
 }
 #time{
   font-size: 40px;
 }
 h5{
   margin-right: 20px;
-  color: white;
 }
 #clue{
   margin-left: 50px;
@@ -44,7 +71,7 @@ h5{
 }
 .dropbtn {
     background-color: #10188db2;
-    color: white;
+    color: var(--text);
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -79,11 +106,11 @@ h5{
   .dropdown:hover .dropbtn {background-color: #852a8d;}
   
 .welcome{
-    font-size: 80px;
+    font-size: 75px;
     padding-left: 50px;
 }
 .heading{
-    font-size: 50px;
+    font-size: 30px;
     padding-left: 50px;
 }
 p{
@@ -91,23 +118,27 @@ p{
     padding-top: 10px;
 }
 .texteditor{
-    color: black;
+    color: var(--text);
     margin-top: 50px;
     padding-left: 50px;
     margin-right: 50px;
+    font-family: sans-serif;
 }
 .save{
-    color: #10188db2;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
+    
     button{
         padding: 30px;
         font-size: 20px;
         margin-top: 50px;
-        margin-right: 80px;
         border-radius: 15px;
         background-color: #179b59;
         font-weight: 700;
-        color: white;
+        color: var(--text);
     }
+}
+#time{
+  width: 180px;
+  height: 35px;
 }
