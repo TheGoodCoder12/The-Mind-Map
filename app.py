@@ -10,7 +10,7 @@
 from flask import Flask, render_template, redirect, request, g, session
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
-from extra import isStrong
+from extra import isStrong, login_required
 
 # Configure application
 app = Flask(__name__)
@@ -137,12 +137,14 @@ def signup():
 
 # Home page
 @app.route("/home")
+@login_required
 def home():
   return render_template("index.html")
 
 
 # Clue Organization
 @app.route("/clue", methods=["GET", "POST"])
+@login_required
 def clue():
   if request.method == "GET":
     return render_template("clue.html")
@@ -173,6 +175,7 @@ def clue():
 
 # People tracker
 @app.route("/people")
+@login_required
 def people():
   if request.method == "GET":
     return render_template("ppl.html")
@@ -203,6 +206,7 @@ def people():
 
 # Log out
 @app.route("/logout")
+@login_required
 def logout():
   session.clear()
   return redirect("/")
