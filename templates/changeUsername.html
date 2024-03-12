@@ -8,12 +8,16 @@
   <body>
     <form action="/changeUsername" method="post">
       <div>
-          <label for="username">New username:</label>
-          <input type="text" id="username" name="username" required>
+          <label for="newUsername">New username:</label>
+          <input type="text" id="newUsername" name="newUsername" required>
       </div>
       <div>
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required>
+      </div>
+      <div>
+        <label for="confirmP">Confirm Password:</label>
+        <input type="password" id="confirmP" name="confirmP" required>
       </div>
       <button class="btn btn-primary" type="submit">Submit</button>
     </form>

@@ -219,11 +219,15 @@ def changeUsername():
   if request.method == "GET":
     return render_template("changeUsername.html")
   else:
-    username = request.form.get("username")
+    newUsername = request.form.get("newUsername")
     password = request.form.get("password")
+    confirmP = request.form.get("confirmP")
     #Checking if any field left blank
-    if not username or not password:
+    if not newUsername or not password or not confirmP:
       return f"Please input all required fields"
+    # Checking if both passwords don't match
+    elif password != confirmP:
+      return f"Password and confirmed password don't match"
     
     # Obtain database connection
     connection = get_db()
@@ -240,15 +244,15 @@ def changeUsername():
       return f"Incorrect password"
     else:
       # Checking if new username is same as old username
-      if username == session['username']:
+      if newUsername == session['username']:
         return f"New username can't be same as old username"
       # Everything is fine, change username
-      cursor.execute("UPDATE users SET username = ? WHERE id = ?;", [username, session['user_id']])
+      cursor.execute("UPDATE users SET username = ? WHERE id = ?;", [newUsername, session['user_id']])
       connection.commit()
       cursor.close()
 
       # Update data in current session
-      session['username'] = username
+      session['username'] = newUsername
 
       # Redirect to homepage
       return redirect("/home")
