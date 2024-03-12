@@ -18,7 +18,13 @@
     <title>People Tracker</title>
 </head>
 <body>
-    <div class="welcome">So, who did you meet today Mr. Holmes?</div>
+    <div class="up">
+        <div class="welcome">So, who did you meet today Mr. Holmes?
+        </div>
+        <div class="switch" id="icon">
+            <img src="../static/images/dark_light_switch.svg" alt="">
+        </div>
+    </div>
     <form id="People Tracker">
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" required>
@@ -28,8 +34,36 @@
         <input type="text" id="Details" name="Details" required>
     </form>
     </div>
-    <div class="save">
-        <button>Add to my people log</button>
+    <div class="end">
+
+        <div class="map">
+            <div class="map_text">
+                Add the location where you met him: 
+            </div>
+            <div id="map">
+                Google map goes here
+            </div>
+        </div>
+        <div class="save">
+            <button>Add to my people log</button>
+        </div>
     </div>
+    <script>
+        var icon = document.getElementById("icon");
+
+        icon.onclick = function () {
+            document.body.classList.toggle("dark-theme");
+
+            // Access the image inside the icon div
+            var img = icon.querySelector('img');
+
+            // Check if body has light-theme class
+            if (document.body.classList.contains("dark-theme")) {
+                img.src = "../static/images/light_mode.svg"; // Change the source to light mode image
+            } else {
+                img.src = "../static/images/dark_light_switch.svg"; // Change the source to dark mode image
+            }
+        }
+</script>
 </body>
 </html>
