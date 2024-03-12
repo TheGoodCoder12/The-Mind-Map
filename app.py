@@ -7,13 +7,14 @@
 # Everytime you make changes, make sure to refresh the page in browser
 
 # Importing required libraries and functions
-from flask import Flask, render_template, redirect, request, g
+from flask import Flask, render_template, redirect, request, g, session
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
 from extra import isStrong
 
 # Configure application
 app = Flask(__name__)
+app.secret_key = 'nothing here'
 
 # Managing the database connection
 def get_db():
@@ -65,7 +66,13 @@ def login():
       cursor.close()
       return f"Incorrect password"
     else:
-      # Entered email and password is correct, redirect the user to home page
+      # Entered email and password is correct, redirect the user to home page after setting up the session
+      userData = cursor.execute("SELECT id, username FROM users where email = ?;", [email])
+      for USERid, USERname in userData:
+        session['user_id'] = USERid
+        session['username'] = USERname
+      session['email'] = email
+
       cursor.close()
       return redirect("/home")
 
@@ -125,7 +132,7 @@ def signup():
 
     # Redirect the user to homepage
     print(f"entered email is {email}, entered password is {password}, hashP = {hashP}")
-    return redirect("/home")
+    return redirect("/login")
 
 
 # Home page
@@ -193,6 +200,13 @@ def people():
     # Reload page
     return redirect("/people")
 
+
+# Log out
+@app.route("/logout")
+def logout():
+  session.clear()
+  return redirect("/")
+  
 
 # Run the application+
 if __name__ == '__main__':
