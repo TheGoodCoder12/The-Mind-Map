@@ -204,11 +204,57 @@ def people():
     return redirect("/people")
 
 
+# Profile
 @app.route("/profile")
 @login_required
 def profile():
   if request.method == 'GET':
     return render_template("profile.html", username=session['username'], email=session['email'])
+
+
+# Change Password
+@app.route("/changePassword", methods=["GET", "POST"])
+@login_required
+def changePassword():
+  if request.method == "GET":
+    return render_template("changePassword.html")
+  else:
+    password = request.form.get("currentP")
+    newP = request.form.get("newP")
+    confirmNewP = request.form.get("confirmNewP")
+    #Checking if any field left blank
+    if not password or not newP or not confirmNewP:
+      return f"Please input all required fields"
+    # Checking if both passwords match
+    elif newP != confirmNewP:
+      return f"New password and confirmed new password don't match"
+    # Checking if password is atleast 8 characters long
+    elif len(newP) < 8:
+      return f"New password should be atleast 8 characters long"
+    # Checking if password is strong enough
+    if not isStrong(newP):
+      return f"New password should contain atleast one uppercase, one lowercase, one digit and one special character"
+    
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    # Getting user password
+    cursor.execute("SELECT hashed_password FROM users WHERE id = ?;", [session['user_id']])
+
+    # Checking if entered password is correct
+    userPassword = cursor.fetchone()[0]
+    if not check_password_hash(userPassword, password):
+      return f"Incorrect password"
+    else:
+      # Everything is fine, change password and redirect to homepage
+      hashedNewP = generate_password_hash(newP)
+      cursor.execute("UPDATE users SET hashed_password = ? WHERE id = ?;", [hashedNewP, session['user_id']])
+      connection.commit()
+      cursor.close()
+      return redirect("/home")
 
 
 # Log out
