@@ -249,6 +249,9 @@ def changePassword():
     if not check_password_hash(userPassword, password):
       return f"Incorrect password"
     else:
+      # Checking if new password is same as old password
+      if newP == password:
+        return f"New password can't be same as old password"
       # Everything is fine, change password and redirect to homepage
       hashedNewP = generate_password_hash(newP)
       cursor.execute("UPDATE users SET hashed_password = ? WHERE id = ?;", [hashedNewP, session['user_id']])
