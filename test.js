@@ -1,21 +1,22 @@
-document.getElementById('addEvent').addEventListener('click', function() {
-  var timeline = document.getElementById('timeline');
-  var newEventYear = prompt("Enter the year of the event:");
-  var newEventTitle = prompt("Enter the title of the event:");
-  var newEventDescription = prompt("Enter the description of the event:");
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var searchQuery = document.getElementById('searchInput').value;
 
-  var timelineItem = document.createElement('div');
-  timelineItem.classList.add('timeline-item');
+  fetch('search.php?query=' + encodeURIComponent(searchQuery))
+    .then(response => response.json())
+    .then(data => {
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = ''; // Clear previous search results
 
-  var timelineDate = document.createElement('div');
-  timelineDate.classList.add('timeline-date');
-  timelineDate.textContent = newEventYear;
-
-  var timelineContent = document.createElement('div');
-  timelineContent.classList.add('timeline-content');
-  timelineContent.innerHTML = '<h3>' + newEventTitle + '</h3>' + '<p>' + newEventDescription + '</p>';
-
-  timelineItem.appendChild(timelineDate);
-  timelineItem.appendChild(timelineContent);
-  timeline.appendChild(timelineItem);
+      if (data.length === 0) {
+        searchResults.innerHTML = 'No results found.';
+      } else {
+        data.forEach(result => {
+          var resultItem = document.createElement('div');
+          resultItem.textContent = result.name; // Change 'name' to the appropriate field in your database
+          searchResults.appendChild(resultItem);
+        });
+      }
+    })
+    .catch(error => console.error('Error searching:', error));
 });
