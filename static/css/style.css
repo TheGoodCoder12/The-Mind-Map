@@ -3,6 +3,13 @@
     margin: 0;
     text-align: center;
 }
+html{
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+    color: var(--nav_text);
+}
 @media only screen and (max-width: 768px) {
     .main{
         display: flex;
@@ -18,8 +25,12 @@
     --nav_text:rgb(86, 68, 3);
     --separator:rgb(225, 185, 2);
     --section:rgb(225, 185, 2);
+    --button:rgb(32,55,67);
+    --btn_text:white;
 }
 .dark-theme{
+    --btn_text:rgb(221, 0, 255);
+    --button:rgb(0, 255, 81);
     --nav:rgb(41, 39, 32);
     --nav_text:rgb(254, 238, 206);
     --separator:rgba(148, 121, 0, 0.979);
@@ -49,6 +60,7 @@ ul{
 ul li{
     list-style: none;
     padding: 16px;
+    cursor: pointer;
 }
 
 .separator{
@@ -78,7 +90,7 @@ section {
 .description{
     font-size: 40px;
     font-family: 'Freestyle Script';
-    
+    padding: 20px;
 }
 
 .img{
@@ -93,7 +105,19 @@ section {
         
     }
 }
+.btn{
+    padding: 20px;
+}
 .heading{
     
     font-family: 'Crimes Times Six';
+}
+button{
+    padding: 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--button);
+    color: var(--btn_text);
 }

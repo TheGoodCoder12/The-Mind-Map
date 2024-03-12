@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- help support -->
     <meta charset="UTF-8">
@@ -9,15 +10,16 @@
     <script src="script.js"></script>
     <meta name="description" content="This is a The-Mind-Map to help Sherlock Holmes organize his clues">
 </head>
+
 <body>
     <nav>
         <ul>
             <!-- change these names to some epic unique names -->
-            <li>Clue Organizer</li>
-            <li>People Tracker</li>
-            <li>Timeline</li>
-            <li>Search</li>
-            <li>Profile</li>
+            <li><a href="#clue">Clue Organizer</a></li>
+            <li><a href="#ppl">People Tracker</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#search">Search</a></li>
+            <li><a href="#profile">Profile</a></li>
             <li><a href="/logout">Log Out</a></li>
             <li>
                 <div class="switch" id="icon">
@@ -27,13 +29,19 @@
         </ul>
     </nav>
     <div class="main">
-        <section>
+
+        <section id="clue">
             <div class="desc">
                 <div class="heading">
-                    <a href="/clue">Clue Organizer</a>
+                    Clue Organizer
                 </div>
                 <div class="description">
                     Ready to get organized? Let's start!
+                    <div class="btn">
+                        <form action="/clue" method="get">
+                            <button>Click Here!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="img">
@@ -42,28 +50,40 @@
         </section>
         <div class="separator">
         </div>
-        <section>
+
+        <section id="ppl">
             <div class="img">
                 <img src="../static/images/ppl.jpg">
             </div>
             <div class="desc">
                 <div class="heading">
-                    <a href="/people">People Tracker</a>
+                    People Tracker
                 </div>
                 <div class="description">
                     Yahan Kuch sexy sa description daal do
+                    <div class="btn">
+                        <form action="/people" method="get">
+                            <button>Click Here!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
         <div class="separator">
         </div>
-        <section>
+
+        <section id="timeline">
             <div class="desc">
                 <div class="heading">
-                    <a href="/timeline">Timeline</a>
+                    Timeline
                 </div>
                 <div class="description">
                     Yahan Kuch sexy sa description daal do
+                    <div class="btn">
+                        <form action="/timeline" method="get">
+                            <button>Click Here!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="img">
@@ -72,28 +92,40 @@
         </section>
         <div class="separator">
         </div>
-        <section>
+
+        <section id="search">
             <div class="img">
                 <img src="../static/images/ppl.jpg">
             </div>
             <div class="desc">
                 <div class="heading">
-                    <a href="/search">Search</a>
+                    Search
                 </div>
                 <div class="description">
                     Yahan Kuch sexy sa description daal do
+                    <div class="btn">
+                        <form action="/search" method="get">
+                            <button>Click Here!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
         <div class="separator">
         </div>
-        <section>
+
+        <section id="profile">
             <div class="desc">
                 <div class="heading">
-                    <a href="/profile">Profile</a>
+                    Profile
                 </div>
                 <div class="description">
                     Yahan Kuch sexy sa description daal do
+                    <div class="btn">
+                        <form action="/profile" method="get">
+                            <button>Click Here!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="img">
@@ -101,7 +133,7 @@
             </div>
         </section>
     </div>
-        
+
     <script>
         var icon = document.getElementById("icon");
 
@@ -121,4 +153,5 @@
 
     </script>
 </body>
+
 </html>
