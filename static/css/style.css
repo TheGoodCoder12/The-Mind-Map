@@ -21,20 +21,20 @@ a{
     }
 }
 :root{
-    --nav:rgb(252, 241, 187);
+    --nav:rgb(227, 210, 125);
     --nav_text:rgb(86, 68, 3);
-    --separator:rgb(225, 185, 2);
-    --section:rgb(225, 185, 2);
-    --button:rgb(32,55,67);
+    --separator:rgb(170, 139, 3);
+    --section:rgb(170, 139, 3);
+    --button:rgba(32,55,67,0.6);
     --btn_text:white;
 }
 .dark-theme{
-    --btn_text:rgb(221, 0, 255);
-    --button:rgb(0, 255, 81);
+    --btn_text:rgb(255, 255, 255);
+    --button:rgba(32, 55, 67, 0.6);
     --nav:rgb(41, 39, 32);
     --nav_text:rgb(254, 238, 206);
-    --separator:rgba(148, 121, 0, 0.979);
-    --section:rgba(148, 121, 0, 0.979);
+    --separator:rgba(107, 87, 1, 0.979);
+    --section:rgba(107, 87, 1, 0.979);
 }
 /* Change the font to some epic looking theme */
 nav{
@@ -98,6 +98,7 @@ section {
     justify-content: center;
     align-items: center;
     width: 50%;
+    height: 60vh;
     img{
         border-radius: 50px;
         width: 100%;

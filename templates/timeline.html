@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Visualizer</title>
+    <meta name="description" content="All the events happened till now">
+    <link rel="stylesheet" href="../static/css/timeline.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Let's see what has happened through the course of the time: </h1>
+        <div class="switch" id="icon">
+            <img src="../static/images/dark_light_switch.svg" alt="">
+        </div>
+        <div class="item">
+            <div class="grid-container">
+                <div class="grid-item circle">img here</div>
+                <div class="grid-item details">
+                    <div class="dive">
+                        <button>Dive deeper</button>
+                    </div>
+                </div>
+                <div class="grid-item circle">img here</div>
+                <div class="grid-item details"><div class="dive">
+                        <button>Dive deeper</button>
+                    </div></div>
+                <div class="grid-item circle">img here</div>
+                <div class="grid-item details"><div class="dive">
+                        <button>Dive deeper</button>
+                    </div></div>
+                <div class="grid-item circle">img here</div>
+                <div class="grid-item details"><div class="dive">
+                        <button>Dive deeper</button>
+                    </div></div>
+                <div class="grid-item circle">img here</div>
+                <div class="grid-item details"><div class="dive">
+                        <button>Dive deeper</button>
+                    </div></div>
+              </div>
+        </div>
+    </div>
+    <script>
+        var icon = document.getElementById("icon");
+
+        icon.onclick = function () {
+            document.body.classList.toggle("dark-theme");
+
+            // Access the image inside the icon div
+            var img = icon.querySelector('img');
+
+            // Check if body has light-theme class
+            if (document.body.classList.contains("dark-theme")) {
+                img.src = "../static/images/light_mode.svg"; // Change the source to light mode image
+            } else {
+                img.src = "../static/images/dark_light_switch.svg"; // Change the source to dark mode image
+            }
+        }
+    </script>
+</body>
+</html>
