@@ -204,6 +204,13 @@ def people():
     return redirect("/people")
 
 
+@app.route("/profile")
+@login_required
+def profile():
+  if request.method == 'GET':
+    return render_template("profile.html", username=session['username'], email=session['email'])
+
+
 # Log out
 @app.route("/logout")
 @login_required
