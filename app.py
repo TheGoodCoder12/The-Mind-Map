@@ -258,6 +258,52 @@ def changeUsername():
       return redirect("/home")
 
 
+# Change email
+@app.route("/changeEmail", methods=["GET", "POST"])
+@login_required
+def changeEmail():
+  if request.method == "GET":
+    return render_template("changeEmail.html")
+  else:
+    newEmail = request.form.get("newEmail")
+    password = request.form.get("password")
+    confirmP = request.form.get("confirmP")
+    #Checking if any field left blank
+    if not newEmail or not password or not confirmP:
+      return f"Please input all required fields"
+    # Checking if both passwords don't match
+    elif password != confirmP:
+      return f"Password and confirmed password don't match"
+    
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    # Getting user password
+    cursor.execute("SELECT hashed_password FROM users WHERE id = ?;", [session['user_id']])
+
+    # Checking if entered password is correct
+    userPassword = cursor.fetchone()[0]
+    if not check_password_hash(userPassword, password):
+      return f"Incorrect password"
+    else:
+      # Checking if new email address is same as old email address
+      if newEmail == session['email']:
+        return f"New email address can't be same as old email address"
+      # Everything is fine, change username
+      cursor.execute("UPDATE users SET email = ? WHERE id = ?;", [newEmail, session['user_id']])
+      connection.commit()
+      cursor.close()
+
+      # Update data in current session
+      session['email'] = newEmail
+
+      # Redirect to homepage
+      return redirect("/home")
+
+
 # Change Password
 @app.route("/changePassword", methods=["GET", "POST"])
 @login_required
