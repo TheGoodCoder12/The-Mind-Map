@@ -212,6 +212,48 @@ def profile():
     return render_template("profile.html", username=session['username'], email=session['email'])
 
 
+# Change username
+@app.route("/changeUsername", methods=["GET", "POST"])
+@login_required
+def changeUsername():
+  if request.method == "GET":
+    return render_template("changeUsername.html")
+  else:
+    username = request.form.get("username")
+    password = request.form.get("password")
+    #Checking if any field left blank
+    if not username or not password:
+      return f"Please input all required fields"
+    
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    # Getting user password
+    cursor.execute("SELECT hashed_password FROM users WHERE id = ?;", [session['user_id']])
+
+    # Checking if entered password is correct
+    userPassword = cursor.fetchone()[0]
+    if not check_password_hash(userPassword, password):
+      return f"Incorrect password"
+    else:
+      # Checking if new username is same as old username
+      if username == session['username']:
+        return f"New username can't be same as old username"
+      # Everything is fine, change username
+      cursor.execute("UPDATE users SET username = ? WHERE id = ?;", [username, session['user_id']])
+      connection.commit()
+      cursor.close()
+
+      # Update data in current session
+      session['username'] = username
+
+      # Redirect to homepage
+      return redirect("/home")
+
+
 # Change Password
 @app.route("/changePassword", methods=["GET", "POST"])
 @login_required
