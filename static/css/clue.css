@@ -136,6 +136,7 @@ p{
         background-color: #179b59;
         font-weight: 700;
         color: var(--text);
+        cursor: pointer;
     }
 }
 #time{

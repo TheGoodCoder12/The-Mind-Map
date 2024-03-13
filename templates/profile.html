@@ -1,16 +1,68 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit your Profile</title>
+  <link rel="stylesheet" href="../static/css/profile.css">
+</head>
+<body>
+  <div class="hero">
+    <div class="switch" id="icon">
+      <img src="../static/images/dark_light_switch.svg" alt="">
+    </div>
+    
+    <div class="main">
+      <div class="photo">
+        <img src="../static/images/user.jpg" alt="No photo uploaded">
+        <button><a href="/editProfilePic">Edit Profile Picture</a></button>
+      </div>
+      <div class="info">
+        <h1>Welcome, {{username}}</h1>
+        <div class="separator"></div>
+        <div class="section">
+          <h3>
+            Change your Username
+          </h3>
+          <p>Your username is: {{username}} </p>
+          <button><a href="/changeUsername">Change Username</a></button>
+        </div>
+        <div class="separator"></div>
+        <div class="section">
+          <h3>
+            Change your Email
+          </h3>
+          <p>Your current email id is: {{ email }}</p>
+          <button><a href="/changeEmail">Change Email</a></button>
+        </div>
+        <div class="separator"></div>
+        <div class="section">
+          <h3>
+            Change Password
+          </h3>
+          <p>Click the button below to change password</p>
+          <button><a href="changePassword">Change Password</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+  var icon = document.getElementById("icon");
 
-<html>
-  <head>
-    <title>Profile Page</title>
-  </head>
-  <body>
-    <h2>Profile</h2>
-    <p>Your username is: {{username}} </p>
-    <button><a href="/changeUsername">Change Username</a></button>
-    <p>Your email id is: {{ email }}</p>
-    <button><a href="/changeEmail">Change Email</a></button>
-    <p>Click the button below to change password</p>
-    <button><a href="changePassword">Change Password</a></button>
-  </body>
+  icon.onclick = function () {
+      document.body.classList.toggle("dark-theme");
+
+      // Access the image inside the icon div
+      var img = icon.querySelector('img');
+
+      // Check if body has light-theme class
+      if (document.body.classList.contains("dark-theme")) {
+          img.src = "../static/images/light_mode.svg"; // Change the source to light mode image
+      } else {
+          img.src = "../static/images/dark_light_switch.svg"; // Change the source to dark mode image
+      }
+  }
+
+</script>
+</body>
 </html>
