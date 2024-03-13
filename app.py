@@ -151,8 +151,8 @@ def clue():
   else:
     # Extracting info from the clue organization form
     category = request.form.get("category")
-    datetime = request.form.get("datetime")
-    detail = request.form.get("description")
+    date = request.form.get("date")
+    description = request.form.get("description")
 
     # Obtain database connection
     connection = get_db()
@@ -161,7 +161,7 @@ def clue():
     cursor = connection.cursor()
 
     # Adding data to database
-    cursor.execute("INSERT INTO clues (category, datetime, description) VALUES (?, ?, ?);", [category, datetime, detail])
+    cursor.execute("INSERT INTO clues (category, date, description, user_id) VALUES (?, ?, ?, ?);", [category, date, description, session['user_id']])
 
     # Making a commit so that changes get saved in the database
     connection.commit()
@@ -174,7 +174,7 @@ def clue():
 
 
 # People tracker
-@app.route("/people")
+@app.route("/people", methods=["GET", "POST"])
 @login_required
 def people():
   if request.method == "GET":
@@ -192,7 +192,7 @@ def people():
     cursor = connection.cursor()
 
     # Adding database to database
-    cursor.execute("INSERT INTO people (name, profession, details, user_id) VALUES ();", [name, profession, details, session['user_id']])
+    cursor.execute("INSERT INTO people (name, profession, details, user_id) VALUES (?, ?, ?, ?);", [name, profession, details, session['user_id']])
 
     # Making a commit so that changes get saved in the database
     connection.commit()

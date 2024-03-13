@@ -11,37 +11,39 @@
 </head>
 
 <body>
-    <div class="date">
-        <div class="welcome font">Welcome Mr. Holmes,
-        </div>
-        <div class="dateIn">
-            <div>Select the date: </div>
-            <div>
-                <input type="date" id="date">
+    <form action="/clue" method="post">
+        <div class="date">
+            <div class="welcome font">Welcome Mr. Holmes,
+            </div>
+            <div class="dateIn">
+                <div>Select the date: </div>
+                <div>
+                    <input type="date" id="date" name="date">
+                </div>
+            </div>
+            <div class="switch" id="icon">
+                <img src="../static/images/dark_light_switch.svg" alt="">
             </div>
         </div>
-        <div class="switch" id="icon">
-            <img src="../static/images/dark_light_switch.svg" alt="">
+        <div class="heading">Write your clues here: </div>
+        <!-- category selection -->
+        <p>Choose from the following categories:</p>
+        <select id="clue" name="category">
+            <option value="person">Person</option>
+            <option value="photo">Photo</option>
+            <option value="video">Video</option>
+            <option value="footprints">Footprints</option>
+            <option value="object">Object</option>
+        </select>
+        <div class="texteditor">
+            <textarea name="description" id="editor" cols="30" rows="10"></textarea>
         </div>
-    </div>
-    <div class="heading">Write your clues here: </div>
-    <!-- category selection -->
-    <p>Choose from the following categories:</p>
-    <select id="clue">
-        <option value="person">Person</option>
-        <option value="photo">Photo</option>
-        <option value="video">Video</option>
-        <option value="footprints">Footprints</option>
-        <option value="object">Object</option>
-    </select>
-    <div class="texteditor">
-        <textarea name="content" id="editor" cols="30" rows="10"></textarea>
-    </div>
-    <div class="save">
-        <div class="btn">
-            <button>Add to my clue log</button>
+        <div class="save">
+            <div class="btn">
+                <button type="submit">Add to my clue log</button>
+            </div>
         </div>
-    </div>
+    </form>
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'))
