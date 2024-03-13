@@ -383,7 +383,7 @@ def timeline():
   cursor.row_factory = sqlite3.Row
 
   # Quering the database to get info about clues
-  cursor.execute("SELECT * FROM clues WHERE user_id = ?;", [session['user_id']])
+  cursor.execute("SELECT * FROM clues WHERE user_id = ? ORDER BY date DESC;", [session['user_id']])
   clueData = cursor.fetchall()
 
   cursor.close()
