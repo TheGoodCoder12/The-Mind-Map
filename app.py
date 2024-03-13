@@ -369,6 +369,29 @@ def changePassword():
       return redirect("/home")
 
 
+# Timeline
+@app.route("/timeline")
+@login_required
+def timeline():
+  # Obtain database connection
+  connection = get_db()
+
+  # Creating a cursor to execute SQL commands
+  cursor = connection.cursor()
+
+  # Set row factory to return dictionaries
+  cursor.row_factory = sqlite3.Row
+
+  # Quering the database to get info about clues
+  cursor.execute("SELECT * FROM clues WHERE user_id = ?;", [session['user_id']])
+  clueData = cursor.fetchall()
+
+  cursor.close()
+
+  # Render the template with clue data
+  return render_template("newTimeline.html", clueData=clueData)
+
+
 # Log out
 @app.route("/logout")
 @login_required
