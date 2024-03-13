@@ -154,6 +154,10 @@ def clue():
     date = request.form.get("date")
     description = request.form.get("description")
 
+    # Checking if any field is left blank
+    if not category or not date or not description:
+      return f"Please input all the required details"
+
     # Obtain database connection
     connection = get_db()
 
@@ -184,6 +188,10 @@ def people():
     name = request.form.get("name")
     profession = request.form.get("profession")
     details = request.form.get("details")
+
+    # Checking if any field is left blank
+    if not name or not profession or not details:
+      return f"Please input all the required details"
 
     # Obtain database connection
     connection = get_db()
