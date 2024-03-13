@@ -23,8 +23,17 @@ def get_db():
     db= g._database = sqlite3.connect("mind-map.db")
   return db
 
+# Close the connection after each request
+def close_db(exception=None):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
-# Set the default route
+# Registering teardown function to be called at the end of each request
+app.teardown_appcontext(close_db)
+
+
+# Set the default/root route
 @app.route("/")
 def welcome():
   return render_template("welcome.html")
