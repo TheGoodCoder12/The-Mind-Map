@@ -121,4 +121,5 @@ button{
     border: none;
     background-color: var(--button);
     color: var(--btn_text);
+    cursor: pointer;
 }
