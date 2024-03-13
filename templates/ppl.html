@@ -25,13 +25,16 @@
             <img src="../static/images/dark_light_switch.svg" alt="">
         </div>
     </div>
-    <form id="People Tracker">
+    <form action="/people" method="post">
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" required>
         <label for="Profession">Profession: </label>
         <input type="text" id="Profession" name="Profession" required>
         <label for="Details">Details: </label>
         <input type="text" id="Details" name="Details" required>
+        <div class="save">
+            <button type="submit">Add to my people log</button>
+        </div>
     </form>
     </div>
     <div class="end">
@@ -44,9 +47,7 @@
                 Google map goes here
             </div>
         </div>
-        <div class="save">
-            <button>Add to my people log</button>
-        </div>
+        
     </div>
     <script>
         var icon = document.getElementById("icon");

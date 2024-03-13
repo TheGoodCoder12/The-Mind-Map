@@ -192,7 +192,7 @@ def people():
     cursor = connection.cursor()
 
     # Adding database to database
-    cursor.execute("INSERT INTO people (name, profession, details) VALUES ();", [name, profession, details])
+    cursor.execute("INSERT INTO people (name, profession, details, user_id) VALUES ();", [name, profession, details, session['user_id']])
 
     # Making a commit so that changes get saved in the database
     connection.commit()
