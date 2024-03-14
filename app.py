@@ -136,11 +136,20 @@ def signup():
     # Making a commit so that changes get saved in the database
     connection.commit()
 
+    # Extracting user id
+    cursor.execute("SELECT id FROM users WHERE username = ?;", [username])
+    userId = cursor.fetchone()[0]
+
     # Close the cursor as operation is complete
     cursor.close()
 
+    # Store session data
+    session['user_id'] = userId
+    session['username'] = username
+    session['email'] = email
+
     # Redirect the user to homepage
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
 
 # Home page
