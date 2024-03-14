@@ -1,25 +1,23 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html lang="en">
-  <head>
-    <title>Change Password</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  </head>
-  <body>
-    <form action="/changeEmail" method="post">
-      <div>
-          <label for="newEmail">Enter new email address:</label>
-          <input type="email" id="newEmail" name="newEmail" required>
-      </div>
-      <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
-      </div>
-      <div>
-        <label for="confirmP">Confirm Password:</label>
-        <input type="password" id="confirmP" name="confirmP" required>
-      </div>
-      <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
-  </body>
-</html>
+{% block title %}Change Email{% endblock %}
+{% block css %}{% endblock %}
+{% block js %}{% endblock %}
+
+{% block body %}
+  <form action="/changeEmail" method="post">
+    <div>
+        <label for="newEmail">Enter new email address:</label>
+        <input type="email" id="newEmail" name="newEmail" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <label for="confirmP">Confirm Password:</label>
+      <input type="password" id="confirmP" name="confirmP" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+{% endblock %}
