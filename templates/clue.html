@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- someone pls add logo and navigate to home page button as well as logo  -->
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clue Organizer</title>
-    <link rel="stylesheet" href="../static/css/clue.css">
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
-</head>
+{% block title %}Clue Organizer{% endblock %}
+{% block css %}<link rel="stylesheet" href="../static/css/clue.css">{% endblock %}
+{% block js %}<script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>{% endblock %}
 
-<body>
+{% block body %}
     <form action="/clue" method="post">
         <div class="date">
             <div class="welcome font">Welcome Mr. Holmes,
@@ -67,6 +61,4 @@
             }
         }
     </script>
-</body>
-
-</html>
+{% endblock %}
