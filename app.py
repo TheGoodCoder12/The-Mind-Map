@@ -10,7 +10,7 @@
 from flask import Flask, render_template, redirect, request, g, session
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
-from extra import isStrong, login_required
+from utils import isStrong, login_required
 
 # Configure application
 app = Flask(__name__)
