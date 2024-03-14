@@ -7,7 +7,7 @@
 # Everytime you make changes, make sure to refresh the page in browser
 
 # Importing required libraries and functions
-from flask import Flask, render_template, redirect, request, g, session
+from flask import Flask, render_template, redirect, request, g, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
 from utils import isStrong, login_required
@@ -83,7 +83,7 @@ def login():
       session['email'] = email
 
       cursor.close()
-      return redirect("/home")
+      return redirect(url_for("home"))
 
 
 # Sign Up
@@ -140,8 +140,7 @@ def signup():
     cursor.close()
 
     # Redirect the user to homepage
-    print(f"entered email is {email}, entered password is {password}, hashP = {hashP}")
-    return redirect("/login")
+    return redirect(url_for("login"))
 
 
 # Home page
@@ -183,7 +182,7 @@ def clue():
     cursor.close()
 
     # Reload page
-    return redirect("/clue")
+    return redirect(url_for("clue"))
 
 
 # People tracker
@@ -218,7 +217,7 @@ def people():
     cursor.close()
 
     # Reload page
-    return redirect("/people")
+    return redirect(url_for("people"))
 
 
 # Profile
@@ -272,7 +271,7 @@ def changeUsername():
       session['username'] = newUsername
 
       # Redirect to homepage
-      return redirect("/home")
+      return redirect(url_for("home"))
 
 
 # Change email
@@ -318,7 +317,7 @@ def changeEmail():
       session['email'] = newEmail
 
       # Redirect to homepage
-      return redirect("/home")
+      return redirect(url_for("home"))
 
 
 # Change Password
@@ -366,7 +365,7 @@ def changePassword():
       cursor.execute("UPDATE users SET hashed_password = ? WHERE id = ?;", [hashedNewP, session['user_id']])
       connection.commit()
       cursor.close()
-      return redirect("/home")
+      return redirect(url_for("home"))
 
 
 # Timeline
@@ -397,7 +396,7 @@ def timeline():
 @login_required
 def logout():
   session.clear()
-  return redirect("/")
+  return redirect(url_for("welcome"))
   
 
 # Run the application+
