@@ -2,13 +2,13 @@ body{
     background-color: var(--bgcolor);
 }
 :root{
-    --bgcolor:blue;
+    --bgcolor:rgb(170, 139, 3);
 }
 .dark-theme{
-    --bgcolor:magenta;
+    --bgcolor:rgba(107, 87, 1, 0.979);
 }
 *{
-    color: white;
+    color: rgb(255, 245, 210);
     padding: 0;
     font-family: 'Crimes Times Six';
 }
@@ -56,7 +56,7 @@ input[type="text"], textarea {
 }
 input[type="submit"] {
     background-color: #4CAF50;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -74,8 +74,8 @@ input[type="submit"]:hover {
         font-size: 20px;
         margin-top: 50px;
         border-radius: 15px;
-        background-color: #179b59;
+        background-color: rgba(32,55,67,0.6);
         font-weight: 700;
-        color: white;
+        color: rgb(249, 241, 208);
     }
 }
