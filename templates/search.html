@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
-    <meta name="description" content="Search through the entire database">
-    <link rel="stylesheet" href="../static/css/search.css">
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}Search{% endblock %}
+{% block css %}<link rel="stylesheet" href="../static/css/search.css">{% endblock%}
+{% block js %}{% endblock %}
+
+{% block main %}
     <h1>Search through the entire database:</h1>
     <!-- person search using tags -->
     <!-- date search -->
-    <form>
+    <form action="/search" method="POST">
         <input type="text" placeholder="Enter your search query">
         <button type="submit">Search</button>
-      </form>
-</body>
-</html>
+    </form>
+{% endblock %}
