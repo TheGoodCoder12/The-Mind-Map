@@ -428,7 +428,7 @@ def timeline():
   cursor.close()
 
   # Render the template with clue data
-  return render_template("newTimeline.html", clueData=clueData)
+  return render_template("timeline.html", clueData=clueData)
 
 
 # Log out
