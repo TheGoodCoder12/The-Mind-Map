@@ -2,14 +2,32 @@
 
 {% block title %}Search{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/search.css">{% endblock%}
-{% block js %}{% endblock %}
+{% block js %}<script src="../static/javascript/search.js"></script>{% endblock %}
 
-{% block main %}
-    <h1>Search through the entire database:</h1>
-    <!-- person search using tags -->
-    <!-- date search -->
-    <form action="/search" method="POST">
-        <input type="text" placeholder="Enter your search query">
-        <button type="submit">Search</button>
-    </form>
+{% block body %}
+<h1>Search for dates, people and clues:</h1>
+<form action="/search" method="POST">
+    <label for="search">Select what you want to search</label>
+    <select id="searchType">
+        <option disabled>Select</option>
+        <option value="date">Date</option>
+        <option value="people">People</option>
+        <option value="clues">Clues</option>
+    </select>
+    <div class="hidden" id="dateChosen">
+        <label for="date">Choose a date: </label>
+        <input type="date" name="date" id="date">
+    </div>
+    <div class="hidden" id="peopleChosen">
+        <label for="people">Enter name of the person: </label>
+        <input type="text" name="people" id="people">
+    </div>
+    <div class="hidden" id="cluesChosen">
+        <label for="clues">Enter any keyword from a clue: </label>
+        <input type="text" name="clues" id="clues">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
 {% endblock %}

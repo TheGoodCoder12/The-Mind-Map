@@ -431,6 +431,19 @@ def timeline():
   return render_template("timeline.html", clueData=clueData)
 
 
+# Search
+@app.route("/search", methods=["GET", "POST"])
+@login_required
+def search():
+  if request.method == "GET":
+    return render_template("search.html")
+  else:
+    date = request.get.form("date")
+    people = request.get.form("people")
+    clues = request.get.form("clues")
+
+
+
 # Log out
 @app.route("/logout")
 @login_required
