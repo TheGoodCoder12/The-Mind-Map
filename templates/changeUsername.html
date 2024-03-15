@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 
 {% block title %}Change Username{% endblock %}
-{% block css %}{% endblock %}
+
+{% block css %}<link rel="stylesheet" href="../static/css/username.css">{% endblock %} 
 {% block js %}{% endblock %}
 
 
 {% block body %}
-  <form action="/changeUsername" method="post">
-    <div>
+<div class="main">
+<form action="/changeUsername" method="post">
+  <div>
         <label for="newUsername">New username:</label>
         <input type="text" id="newUsername" name="newUsername" required>
     </div>
@@ -21,4 +23,5 @@
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
+</div>
 {% endblock %}
