@@ -442,6 +442,20 @@ def search():
     people = request.get.form("people")
     clues = request.get.form("clues")
 
+    # Obtain database connection
+    connection = get_db()
+
+    # Creating a cursor to execute SQL commands
+    cursor = connection.cursor()
+
+    if date and not people and not clues:
+      cursor.execute("SELECT ")
+    elif not date and people and not clues:
+      # Do something
+      print("work in progess")
+    elif not date and not people and clues:
+      # do something
+      print("work in progress")
 
 
 # Log out
