@@ -1,7 +1,6 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
 }
 :root{
     --bgcolor:rgba(177, 156, 31, 0.957);
@@ -15,9 +14,6 @@
     --btn:rgba(41, 29, 7, 0.65);
     --btn_text:rgb(254, 238, 206);;
     
-}
-li{
-    color: var(--text);
 }
 .hero{
     display: flex;
@@ -94,8 +90,4 @@ button{
     color: var(--btn_text);
     border-radius: 15px;
     font-size: 20px;
-}
-a{
-    text-decoration: none;
-    color: var(--btn_text);
 }
