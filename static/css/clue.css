@@ -38,7 +38,7 @@ body{
 }
 .date{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 15px;
   padding-top: 100px;
 }
