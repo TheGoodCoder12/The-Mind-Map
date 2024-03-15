@@ -90,4 +90,8 @@ button{
     color: var(--btn_text);
     border-radius: 15px;
     font-size: 20px;
+    a{
+        color: var(--btn_text);
+        background-color: var(--btn);
+    }
 }
