@@ -7,7 +7,7 @@
 # Everytime you make changes, make sure to refresh the page in browser
 
 # Importing required libraries and functions
-from flask import Flask, render_template, redirect, request, g, session, url_for
+from flask import Flask, render_template, redirect, request, g, session, url_for, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
 from utils import isStrong, login_required
@@ -52,7 +52,8 @@ def login():
 
     # Checking if user left any field blank
     if not email or not enterPassword:
-      return f"Please enter all required fields to proceed"
+      flash("Please enter all required fields to proceed", 'error')
+      return redirect(url_for("login"))
     
     # Hashing the obtained password
     hashEnterP = generate_password_hash(enterPassword)
@@ -68,12 +69,14 @@ def login():
     userPassword = cursor.fetchone()
     if not userPassword:  # no password found for entered email id
       cursor.close()
-      return f"Please enter a valid registered email id"
+      flash("Please enter a valid registered email id", 'error')
+      return redirect(url_for("login"))
     
     # Checking password entered by the user
     if not check_password_hash(userPassword[0], enterPassword):
       cursor.close()
-      return f"Incorrect password"
+      flash("Incorrect password", 'error')
+      return redirect(url_for("login"))
     else:
       # Entered email and password is correct, redirect the user to home page after setting up the session
       userData = cursor.execute("SELECT id, username FROM users where email = ?;", [email])
@@ -101,17 +104,21 @@ def signup():
 
     # Checking if any field is empty - check1
     if not username or not email or not password or not confirmP:
-      return f"Please enter all required fields"
+      flash("Please enter all required fields", 'error')
+      return redirect(url_for("sign_up"))
     # Checking if password and confirmed password match - check2
     elif confirmP != password:
-      return f"New password and confirmed password don't match"
+      flash("New password and confirmed password don't match", 'error')
+      return redirect(url_for("sign_up"))
     # Checking if password is atleast 8 characters long - check3
     elif len(password) < 8:
-      return f"Password should be atleast 8 characters long"
+      flash("Password should be atleast 8 characters long", 'error')
+      return redirect(url_for("sign_up"))
     
     # Checking if password is strong enough - check4
     if not isStrong(password):
-      return f"Password should contain atleast one uppercase, one lowercase, one digit and one special character"
+      flash("Password should contain atleast one uppercase, one lowercase, one digit and one special character", 'error')
+      return redirect(url_for("sign_up"))
 
     # Obtain database connection
     connection = get_db()
@@ -123,9 +130,11 @@ def signup():
     data = cursor.execute("SELECT email, username FROM users;")
     for EMAIL, USERNAME in data:
       if EMAIL == email:
-        return f"Email id already exists"
+        flash("Email id already exists", 'error')
+        return redirect(url_for("sign_up"))
       elif USERNAME == username:
-        return f"Username already exists, please choose another"
+        flash("Username already exists, please choose another", 'error')
+        return redirect(url_for("sign_up"))
 
     # Hash the password
     hashP = generate_password_hash(password)
@@ -173,7 +182,8 @@ def clue():
 
     # Checking if any field is left blank
     if not category or not date or not description:
-      return f"Please input all the required details"
+      flash("Please input all the required details", 'error')
+      return redirect(url_for("clue"))
 
     # Obtain database connection
     connection = get_db()
@@ -191,6 +201,7 @@ def clue():
     cursor.close()
 
     # Reload page
+    flash("Clue added successfully!", 'success')
     return redirect(url_for("clue"))
 
 
@@ -208,7 +219,8 @@ def people():
 
     # Checking if any field is left blank
     if not name or not profession or not details:
-      return f"Please input all the required details"
+      flash("Please input all the required details", 'error')
+      return redirect(url_for("people"))
 
     # Obtain database connection
     connection = get_db()
@@ -226,6 +238,7 @@ def people():
     cursor.close()
 
     # Reload page
+    flash("Person added to tracker successfully!", 'success')
     return redirect(url_for("people"))
 
 
@@ -249,10 +262,12 @@ def changeUsername():
     confirmP = request.form.get("confirmP")
     #Checking if any field left blank
     if not newUsername or not password or not confirmP:
-      return f"Please input all required fields"
+      flash("Please input all required fields", 'error')
+      return redirect(url_for("changeUsername"))
     # Checking if both passwords don't match
     elif password != confirmP:
-      return f"Password and confirmed password don't match"
+      flash("Password and confirmed password don't match", 'error')
+      return redirect(url_for("changeUsername"))
     
     # Obtain database connection
     connection = get_db()
@@ -266,11 +281,13 @@ def changeUsername():
     # Checking if entered password is correct
     userPassword = cursor.fetchone()[0]
     if not check_password_hash(userPassword, password):
-      return f"Incorrect password"
+      flash("Incorrect password", 'error')
+      return redirect(url_for("changeUsername"))
     else:
       # Checking if new username is same as old username
       if newUsername == session['username']:
-        return f"New username can't be same as old username"
+        flash("New username can't be same as old username", 'error')
+        return redirect(url_for("changeUsername"))
       # Everything is fine, change username
       cursor.execute("UPDATE users SET username = ? WHERE id = ?;", [newUsername, session['user_id']])
       connection.commit()
@@ -280,6 +297,7 @@ def changeUsername():
       session['username'] = newUsername
 
       # Redirect to homepage
+      flash("Username changed successfully!", 'success')
       return redirect(url_for("home"))
 
 
@@ -293,13 +311,14 @@ def changeEmail():
     newEmail = request.form.get("newEmail")
     password = request.form.get("password")
     confirmP = request.form.get("confirmP")
-    #Checking if any field left blank
+    # Checking if any field left blank
     if not newEmail or not password or not confirmP:
-      return f"Please input all required fields"
+      flash("Please input all required fields", 'error')
+      return redirect(url_for("changeEmail"))
     # Checking if both passwords don't match
     elif password != confirmP:
-      return f"Password and confirmed password don't match"
-    
+      flash("Password and confirmed password don't match", 'error')
+      return redirect(url_for("changeEmail"))
     # Obtain database connection
     connection = get_db()
 
@@ -312,11 +331,13 @@ def changeEmail():
     # Checking if entered password is correct
     userPassword = cursor.fetchone()[0]
     if not check_password_hash(userPassword, password):
-      return f"Incorrect password"
+      flash("Incorrect password", 'error')
+      return redirect(url_for("changeEmail"))
     else:
       # Checking if new email address is same as old email address
       if newEmail == session['email']:
-        return f"New email address can't be same as old email address"
+        flash("New email address can't be same as old email address", 'error')
+        return redirect(url_for("changeEmail"))
       # Everything is fine, change username
       cursor.execute("UPDATE users SET email = ? WHERE id = ?;", [newEmail, session['user_id']])
       connection.commit()
@@ -326,6 +347,7 @@ def changeEmail():
       session['email'] = newEmail
 
       # Redirect to homepage
+      flash("Email changed successfully!", 'success')
       return redirect(url_for("home"))
 
 
@@ -341,16 +363,20 @@ def changePassword():
     confirmNewP = request.form.get("confirmNewP")
     #Checking if any field left blank
     if not password or not newP or not confirmNewP:
-      return f"Please input all required fields"
+      flash("Please enter all required fields", 'error')
+      return redirect(url_for("changePassword"))
     # Checking if both passwords match
     elif newP != confirmNewP:
-      return f"New password and confirmed new password don't match"
+      flash("New password and confirmed new password don't match", 'error')
+      return redirect(url_for("changePassword"))
     # Checking if password is atleast 8 characters long
     elif len(newP) < 8:
-      return f"New password should be atleast 8 characters long"
+      flash("New password should be atleast 8 characters long", 'error')
+      return redirect(url_for("changePassword"))
     # Checking if password is strong enough
     if not isStrong(newP):
-      return f"New password should contain atleast one uppercase, one lowercase, one digit and one special character"
+      flash("New password should contain atleast one uppercase, one lowercase, one digit and one special character", 'error')
+      return redirect(url_for("changePassword"))
     
     # Obtain database connection
     connection = get_db()
@@ -364,16 +390,21 @@ def changePassword():
     # Checking if entered password is correct
     userPassword = cursor.fetchone()[0]
     if not check_password_hash(userPassword, password):
-      return f"Incorrect password"
+      flash("Incorrect password", 'error')
+      return redirect(url_for("changePassword"))
     else:
       # Checking if new password is same as old password
       if newP == password:
-        return f"New password can't be same as old password"
-      # Everything is fine, change password and redirect to homepage
+        flash("New password can't be same as old password", 'error')
+        return redirect(url_for("changePassword"))
+      # Everything is fine, change password
       hashedNewP = generate_password_hash(newP)
       cursor.execute("UPDATE users SET hashed_password = ? WHERE id = ?;", [hashedNewP, session['user_id']])
       connection.commit()
       cursor.close()
+
+      # Redirect user to homepage
+      flash("Password changed successfully!", 'success')
       return redirect(url_for("home"))
 
 
