@@ -1,9 +1,10 @@
 :root{
-  --bgcolor:yellow;
+  --bgcolor:rgb(170, 139, 3);
   --text:black;
+  --buttontext : rgb(255, 232, 213);
 }
 .dark-theme{
-  --bgcolor:rgb(8, 97, 44);
+  --bgcolor:rgba(107, 87, 1, 0.979);
   --text:rgb(255, 255, 255);
 
 }
@@ -137,9 +138,9 @@ p{
         font-size: 20px;
         margin-top: 50px;
         border-radius: 15px;
-        background-color: #179b59;
+        background-color: rgba(32,55,67,0.6);
         font-weight: 700;
-        color: var(--text);
+        color: var(--buttontext);
         cursor: pointer;
     }
 }
