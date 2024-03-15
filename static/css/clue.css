@@ -2,10 +2,14 @@
   --bgcolor:rgb(170, 139, 3);
   --text:black;
   --buttontext : rgb(255, 232, 213);
+  --placeholder:rgb(241, 229, 170);
+  --placeholder_text:rgb(54, 36, 7);
 }
 .dark-theme{
+  --placeholder:rgb(249, 218, 157);
   --bgcolor:rgba(107, 87, 1, 0.979);
   --text:rgb(255, 255, 255);
+  --placeholder_text:rgb(26, 26, 0);
 
 }
 *{
@@ -53,6 +57,8 @@ body{
   height: 50%;
   margin-top: 20px;
   border-radius: 6px;
+  background-color: var(--placeholder);
+  color: var(--placeholder_text);
 }
 .save{
   display: flex;
@@ -73,6 +79,8 @@ h5{
 #clue{
   margin-left: 50px;
   font-size: 23px;
+  background-color: var(--placeholder);
+  color: var(--placeholder_text);
 }
 .dropbtn {
     background-color: #10188db2;
