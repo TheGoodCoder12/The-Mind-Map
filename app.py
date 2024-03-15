@@ -102,24 +102,6 @@ def signup():
     password = request.form.get("password")
     confirmP = request.form.get("confirmP")
 
-    # Checking if any field is empty - check1
-    if not username or not email or not password or not confirmP:
-      flash("Please enter all required fields", 'warning')
-      return redirect(url_for("signup"))
-    # Checking if password and confirmed password match - check2
-    elif confirmP != password:
-      flash("New password and confirmed password don't match", 'warning')
-      return redirect(url_for("signup"))
-    # Checking if password is atleast 8 characters long - check3
-    elif len(password) < 8:
-      flash("Password should be atleast 8 characters long", 'warning')
-      return redirect(url_for("signup"))
-    
-    # Checking if password is strong enough - check4
-    if not isStrong(password):
-      flash("Password should contain atleast one uppercase, one lowercase, one digit and one special character", 'warning')
-      return redirect(url_for("signup"))
-
     # Obtain database connection
     connection = get_db()
 
