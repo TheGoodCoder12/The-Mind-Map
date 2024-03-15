@@ -15,6 +15,7 @@
 .box_main{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .box1{
     display: flex;
@@ -34,6 +35,11 @@ body {
     color:  rgb(255, 255, 255);
     font-size: 85px;
     margin-top: 5.5%;
+}
+.flash{
+    height: 20px;
+    position: relative;
+    z-index: 4;
 }
 .container {
     max-width: 400px;
