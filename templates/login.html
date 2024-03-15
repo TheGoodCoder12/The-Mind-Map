@@ -10,6 +10,17 @@
 </head>
 
 <body>
+    <!-- Display flash messages -->
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <div class="{{ category }}">{{ messages }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <div class="box_main">
         <div class="heading">
             <center>
