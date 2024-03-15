@@ -5,32 +5,95 @@
 {% block js %}<script src="../static/javascript/search.js"></script>{% endblock %}
 
 {% block body %}
-<div class="main">
+    <div class="main">
 
-    <h1>Search for dates, people and clues:</h1>
-    <form action="/search" method="POST">
-        <label for="search">Select what you want to search</label>
-        <select id="searchType">
-            <option disabled selected>Select</option>
-            <option value="date">Date</option>
-            <option value="people">People</option>
-            <option value="clues">Clues</option>
-        </select>
-        <div class="hidden" id="dateChosen">
-            <label for="date">Choose a date: </label>
-            <input type="date" name="date" id="date">
-        </div>
-        <div class="hidden" id="peopleChosen">
-            <label for="people">Enter name of the person: </label>
-            <input type="text" name="people" id="people">
-        </div>
-        <div class="hidden" id="cluesChosen">
-            <label for="clues">Enter any keyword from a clue: </label>
-            <input type="text" name="clues" id="clues">
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-      </form>
-</div>
+        <h1>Search for dates, people and clues:</h1>
+        <form action="/search" method="POST">
+            <label for="search">Select what you want to search</label>
+            <select id="searchType">
+                <option disabled selected>Select</option>
+                <option value="date">Date</option>
+                <option value="people">People</option>
+                <option value="clues">Clues</option>
+            </select>
+            <div class="hidden" id="dateChosen">
+                <label for="date">Choose a date: </label>
+                <input type="date" name="date" id="date">
+            </div>
+            <div class="hidden" id="peopleChosen">
+                <label for="people">Enter name of the person: </label>
+                <input type="text" name="people" id="people">
+            </div>
+            <div class="hidden" id="cluesChosen">
+                <label for="clues">Enter any keyword from a clue: </label>
+                <input type="text" name="clues" id="clues">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+
+    {% if cluesByDate %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for clue in cluesByDate %}
+                    <tr>
+                        <td>{{ clue.date }}</td>
+                        <td>{{ clue.category }}</td>
+                        <td>{{ clue.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% elif peopleData %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Profession</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person in peopleData %}
+                    <tr>
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.profession }}</td>
+                        <td>{{ person.details }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    {% elif cluesInfo %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in cluesInfo %}
+                    <tr>
+                        <td>{{ data.date }}</td>
+                        <td>{{ data.category }}</td>
+                        <td>{{ data.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+
 {% endblock %}

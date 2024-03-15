@@ -420,9 +420,9 @@ def search():
   if request.method == "GET":
     return render_template("search.html")
   else:
-    date = request.get.form("date")
-    people = request.get.form("people")
-    clues = request.get.form("clues")
+    date = request.form.get("date")
+    people = request.form.get("people")
+    clues = request.form.get("clues")
 
     # Obtain database connection
     connection = get_db()
@@ -430,14 +430,27 @@ def search():
     # Creating a cursor to execute SQL commands
     cursor = connection.cursor()
 
+    # Set row factory to return dictionaries
+    cursor.row_factory = sqlite3.Row
+
+    # Display date related searches
     if date and not people and not clues:
-      cursor.execute("SELECT ")
+      cursor.execute("SELECT * FROM clues WHERE date = ? AND user_id = ?", [date, session['user_id']])
+      cluesByDate = cursor.fetchall()
+      cursor.close()
+      return render_template("search.html", cluesByDate=cluesByDate)
+    # Display people related searches
     elif not date and people and not clues:
-      # Do something
-      print("work in progess")
-    elif not date and not people and clues:
-      # do something
-      print("work in progress")
+      cursor.execute("SELECT * FROM people WHERE name LIKE ? AND user_id = ?;", ['%' + people + '%', session['user_id']])
+      peopleData = cursor.fetchall()
+      cursor.close()
+      return render_template("search.html", peopleData=peopleData)
+    # Display clue related searches from their description
+    else:
+      cursor.execute("SELECT * FROM clues WHERE description LIKE ? AND user_id = ?;", ['%' + clues + '%', session['user_id']])
+      cluesInfo = cursor.fetchall()
+      cursor.close()
+      return render_template("search.html", cluesInfo=cluesInfo)
 
 
 # Log out
