@@ -15,6 +15,10 @@ body{
     justify-content: center;
     align-items: center;
 }
+.heading{
+    padding-top: 10vh;
+    font-size: 50px;
+}
 .grid-container {
     width: 40vw;
     display: grid;

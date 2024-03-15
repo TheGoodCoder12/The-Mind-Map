@@ -1,70 +1,46 @@
-<!-- New Idea: GPS Tracker -->
-<!-- map loaction marker -->
-<!-- checkbox -->
-<!-- Printout map markings made -->
-<!-- epic animation-->
-<!-- per  day counter -->
-<!-- pin -->
-<!-- to do list -->
-<!-- dashboard -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This is like a contact log">
-    <link rel="stylesheet" href="../static/css/ppl.css">
-    <script src="ppl.js"></script>
-    <title>People Tracker</title>
-</head>
-<body>
-    <div class="up">
-        <div class="welcome">So, who did you meet today Mr. Holmes?
+{% extends "layout.html" %}
+
+{% block title %}Clue Organizer{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="../static/css/ppl.css">{% endblock %}
+{% block js %}
+<script src="../static/javascript/profile.js"></script>{% endblock %}
+
+{% block body %}
+
+
+<div class="up">
+    <div class="welcome">
+        <div class="text">
+            So, who did you meet today Mr. Holmes?
         </div>
-        <div class="switch" id="icon">
-            <img src="../static/images/dark_light_switch.svg" alt="">
-        </div>
+        <form action="/people" method="post">
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" required>
+            <label for="profession">Profession: </label>
+            <input type="text" id="profession" name="profession" required>
+            <label for="details">Details: </label>
+            <input type="text" id="details" name="details" required>
+            <div class="save">
+                <button type="submit">Add to my people log</button>
+        </form>
     </div>
-    <form action="/people" method="post">
-        <label for="name">Name: </label>
-        <input type="text" id="name" name="name" required>
-        <label for="profession">Profession: </label>
-        <input type="text" id="profession" name="profession" required>
-        <label for="details">Details: </label>
-        <input type="text" id="details" name="details" required>
-        <div class="save">
-            <button type="submit">Add to my people log</button>
-        </div>
-    </form>
-    </div>
-    <div class="end">
+</div>
+<script>
+    var icon = document.getElementById("icon");
 
-        <div class="map">
-            <div class="map_text">
-                Add the location where you met him: 
-            </div>
-            <div id="map">
-                Google map goes here
-            </div>
-        </div>
-        
-    </div>
-    <script>
-        var icon = document.getElementById("icon");
+icon.onclick = function () {
+    document.body.classList.toggle("dark-theme");
 
-        icon.onclick = function () {
-            document.body.classList.toggle("dark-theme");
+    // Access the image inside the icon div
+    var img = icon.querySelector('img');
 
-            // Access the image inside the icon div
-            var img = icon.querySelector('img');
-
-            // Check if body has light-theme class
-            if (document.body.classList.contains("dark-theme")) {
-                img.src = "../static/images/light_mode.svg"; // Change the source to light mode image
-            } else {
-                img.src = "../static/images/dark_light_switch.svg"; // Change the source to dark mode image
-            }
-        }
+    // Check if body has light-theme class
+    if (document.body.classList.contains("dark-theme")) {
+        img.src = "../static/images/light_mode.svg"; // Change the source to light mode image
+    } else {
+        img.src = "../static/images/dark_light_switch.svg"; // Change the source to dark mode image
+    }
+}
 </script>
-</body>
-</html>
+{% endblock %}
