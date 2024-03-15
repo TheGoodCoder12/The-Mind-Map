@@ -1,7 +1,6 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
 }
 :root{
     --bgcolor:rgba(177, 156, 31, 0.957);
@@ -66,7 +65,7 @@ h1{
     letter-spacing: 2px;
 }
 .main{
-    margin-top: 2vh;
+    margin-top: 14vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,18 +84,14 @@ p{
 button{
     margin: 15px;
 }
-.switch{
-    padding-bottom: 30vh;
-    padding-left: 10vw;
-}
 button{
     padding: 10px;
     background-color: var(--btn);
     color: var(--btn_text);
     border-radius: 15px;
     font-size: 20px;
-}
-a{
-    text-decoration: none;
-    color: var(--btn_text);
+    a{
+        color: var(--btn_text);
+        background-color: var(--btn);
+    }
 }

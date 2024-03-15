@@ -3,11 +3,21 @@ body{
     color: var(--text);
 }
 :root{
-    --bgcolor:white;
+    --bgcolor:rgb(170, 139, 3);
     --text:black;
 }
+tr{
+    font-weight: 600;
+}
+tbody tr td{
+    color: var(--text);
+}
+.trHead th{
+    font-weight: 900;
+    font-size: 20px;
+}
 .dark-theme{
-    --bgcolor:black;
+    --bgcolor:rgba(107, 87, 1, 0.979);
     --text:white;
 }
 .item{

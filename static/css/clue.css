@@ -1,10 +1,15 @@
 :root{
-  --bgcolor:yellow;
+  --bgcolor:rgb(170, 139, 3);
   --text:black;
+  --buttontext : rgb(255, 232, 213);
+  --placeholder:rgb(241, 229, 170);
+  --placeholder_text:rgb(54, 36, 7);
 }
 .dark-theme{
-  --bgcolor:rgb(8, 97, 44);
+  --placeholder:rgb(249, 218, 157);
+  --bgcolor:rgba(107, 87, 1, 0.979);
   --text:rgb(255, 255, 255);
+  --placeholder_text:rgb(26, 26, 0);
 
 }
 *{
@@ -37,7 +42,7 @@ body{
 }
 .date{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 15px;
   padding-top: 100px;
 }
@@ -52,6 +57,8 @@ body{
   height: 50%;
   margin-top: 20px;
   border-radius: 6px;
+  background-color: var(--placeholder);
+  color: var(--placeholder_text);
 }
 .save{
   display: flex;
@@ -66,12 +73,10 @@ body{
 #time{
   font-size: 40px;
 }
-h5{
-  margin-right: 20px;
-}
 #clue{
-  margin-left: 50px;
   font-size: 23px;
+  background-color: var(--placeholder);
+  color: var(--placeholder_text);
 }
 .dropbtn {
     background-color: #10188db2;
@@ -137,9 +142,9 @@ p{
         font-size: 20px;
         margin-top: 50px;
         border-radius: 15px;
-        background-color: #179b59;
+        background-color: rgba(32,55,67,0.6);
         font-weight: 700;
-        color: var(--text);
+        color: var(--buttontext);
         cursor: pointer;
     }
 }
