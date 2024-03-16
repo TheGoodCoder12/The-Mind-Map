@@ -8,7 +8,7 @@
 
 {% block body %}
 <div class="main">
-<form action="/changeUsername" method="post">
+<form onsubmit="return validate()" action="/changeUsername" method="post">
   <div>
         <label for="newUsername">New username:</label>
         <input type="text" id="newUsername" name="newUsername" required>
@@ -24,4 +24,18 @@
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
 </div>
+
+<script>
+  function validate() {
+    password = document.getElementById('password').value;
+    confirmP = document.getElementById('confirmP').value;
+
+    if (password != confirmP) {
+      alert("Password and confirmed password don't match")
+      return false;
+    }
+
+    return true;
+  }
+</script>
 {% endblock %}

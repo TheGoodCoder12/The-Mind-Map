@@ -261,6 +261,14 @@ def changeUsername():
       if newUsername == session['username']:
         flash("New username can't be same as old username", 'warning')
         return redirect(url_for("changeUsername"))
+      
+      # Checking if new username is already in use
+      cursor.execute("SELECT username FROM users;")
+      usernames = cursor.fetchall()
+      if newUsername in usernames:
+        flash("Username is already in use", 'warning')
+        return redirect(url_for("changeUsername"))
+
       # Everything is fine, change username
       cursor.execute("UPDATE users SET username = ? WHERE id = ?;", [newUsername, session['user_id']])
       connection.commit()
