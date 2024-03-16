@@ -50,14 +50,6 @@ def login():
     email = request.form.get("email")
     enterPassword = request.form.get("password")
 
-    # Checking if user left any field blank
-    if not email or not enterPassword:
-      flash("Please enter all required fields to proceed", 'warning')
-      return redirect(url_for("login"))
-    
-    # Hashing the obtained password
-    hashEnterP = generate_password_hash(enterPassword)
-
     # Obtain database connection
     connection = get_db()
 
