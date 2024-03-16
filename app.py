@@ -1,20 +1,17 @@
-# FOR RUNNING THE APPLICATION IN BROWSER:
-# Open requirements.txt file in VS Code
-# In the bottom right corner, you will see 'Create Environment' click on it
-# After completion, you will be able to see .venv file in your directory
-# Now run the python file, you will get a link to the server in the terminal
-# Ctrl + Click to open this in browser
-# Everytime you make changes, make sure to refresh the page in browser
-
-# Importing required libraries and functions
+# Importing required libraries
+import os
 from flask import Flask, render_template, redirect, request, g, session, url_for, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
-from utils import isStrong, login_required
+from utils import login_required
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Configure application
 app = Flask(__name__)
-app.secret_key = 'nothing here'
+app.secret_key = os.getenv("secret_key")
 
 # Managing the database connection
 def get_db():
