@@ -283,15 +283,7 @@ def changeEmail():
   else:
     newEmail = request.form.get("newEmail")
     password = request.form.get("password")
-    confirmP = request.form.get("confirmP")
-    # Checking if any field left blank
-    if not newEmail or not password or not confirmP:
-      flash("Please input all required fields", 'warning')
-      return redirect(url_for("changeEmail"))
-    # Checking if both passwords don't match
-    elif password != confirmP:
-      flash("Password and confirmed password don't match", 'warning')
-      return redirect(url_for("changeEmail"))
+  
     # Obtain database connection
     connection = get_db()
 
@@ -311,6 +303,14 @@ def changeEmail():
       if newEmail == session['email']:
         flash("New email address can't be same as old email address", 'warning')
         return redirect(url_for("changeEmail"))
+      
+      # Checking if new email address is same as other already existing email addresses
+      cursor.execute("SELECT email FROM users;")
+      emails = cursor.fetchall()
+      if newEmail in emails:
+        flash("The new email address is already in use")
+        return redirect(url_for("changeEmail"))
+
       # Everything is fine, change username
       cursor.execute("UPDATE users SET email = ? WHERE id = ?;", [newEmail, session['user_id']])
       connection.commit()
