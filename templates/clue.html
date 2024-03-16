@@ -12,14 +12,15 @@
             <div class="dateIn">
                 <div>Select the date: </div>
                 <div>
-                    <input type="date" id="date" name="date">
+                    <input type="date" id="date" name="date" required>
                 </div>
             </div>
         </div>
         <div class="heading">Write your clues here: </div>
         <!-- category selection -->
         <p>Choose from the following categories:</p>
-        <select id="clue" name="category">
+        <select id="clue" name="category" required>
+            <option disabled selected>Select</option>
             <option value="person">Person</option>
             <option value="photo">Photo</option>
             <option value="video">Video</option>
@@ -27,7 +28,7 @@
             <option value="object">Object</option>
         </select>
         <div class="texteditor">
-            <textarea name="description" id="editor" cols="30" rows="10"></textarea>
+            <textarea name="description" id="editor" cols="30" rows="10" required></textarea>
         </div>
         <div class="save">
             <div class="btn">
