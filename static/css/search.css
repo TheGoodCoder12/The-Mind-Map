@@ -1,10 +1,39 @@
 .hidden{
-  display: none;
-}
-.main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 25vh;
-}
+    display: none;
+  }
+  .main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 25vh;
+  }
+  :root{
+    --bgcolor:blue;
+    --text:white;
+    --option_color:lime;
+    --option_text:purple;
+  }
+  .dark-theme{
+    --bgcolor:red;
+    --text:black;
+    --option_color:lime;
+    --option_text:purple;
+  }
+  select{
+    background-color: var(--option_color);
+    color: var(--option_text);
+  }
+  h1{
+    margin:50px;
+  }
+  button{
+    margin: 50px;
+  }
+  label{
+    margin-right: 15px;
+  }
+  body{
+    background-color: var(--bgcolor);
+    color: var(--text);
+  }
