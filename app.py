@@ -341,23 +341,6 @@ def changePassword():
   else:
     password = request.form.get("currentP")
     newP = request.form.get("newP")
-    confirmNewP = request.form.get("confirmNewP")
-    #Checking if any field left blank
-    if not password or not newP or not confirmNewP:
-      flash("Please enter all required fields", 'warning')
-      return redirect(url_for("changePassword"))
-    # Checking if both passwords match
-    elif newP != confirmNewP:
-      flash("New password and confirmed new password don't match", 'warning')
-      return redirect(url_for("changePassword"))
-    # Checking if password is atleast 8 characters long
-    elif len(newP) < 8:
-      flash("New password should be atleast 8 characters long", 'warning')
-      return redirect(url_for("changePassword"))
-    # Checking if password is strong enough
-    if not isStrong(newP):
-      flash("New password should contain atleast one uppercase, one lowercase, one digit and one special character", 'warning')
-      return redirect(url_for("changePassword"))
     
     # Obtain database connection
     connection = get_db()
