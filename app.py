@@ -233,14 +233,6 @@ def changeUsername():
     newUsername = request.form.get("newUsername")
     password = request.form.get("password")
     confirmP = request.form.get("confirmP")
-    #Checking if any field left blank
-    if not newUsername or not password or not confirmP:
-      flash("Please input all required fields", 'warning')
-      return redirect(url_for("changeUsername"))
-    # Checking if both passwords don't match
-    elif password != confirmP:
-      flash("Password and confirmed password don't match", 'warning')
-      return redirect(url_for("changeUsername"))
     
     # Obtain database connection
     connection = get_db()
