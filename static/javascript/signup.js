@@ -4,14 +4,8 @@ function validate() {
   var password = document.getElementById('password').value;
   var confirmP = document.getElementById('confirmP').value;
 
-  // Checking if any field is empty
-  if (!username || !email || !password || !confirmP) {
-    alert("Please input all the required fields");
-    return false;
-  }
-
   // Checking if password and confirmed password matches
-  else if (password != confirmP) {
+  if (password != confirmP) {
     alert("Password and confirmed password don't match")
     return false;
   }

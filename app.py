@@ -92,7 +92,6 @@ def signup():
     username = request.form.get("username")
     email = request.form.get("email")
     password = request.form.get("password")
-    confirmP = request.form.get("confirmP")
 
     # Obtain database connection
     connection = get_db()
