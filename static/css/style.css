@@ -24,7 +24,44 @@ li{
         display: flex;
         flex-direction: column-reverse;
     }
+    nav{
+        display: none;
+    }
+    .toggler{
+        display: block;
+        height: 5vh;
+        background-color: gray;
+        img{
+            height: 2vh;
+            width: 2vh;
+            display: inline-block;
+        }
+        ul{
+            display: none;
+        }
+    }
+    .show{
+        display: block;
+        ul{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
 }
+.toggler{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+@media (min-width: 768px) {
+    .toggler {
+        display: none;
+    }
+    
+}
+
 :root{
     --nav:rgb(227, 210, 125);
     --nav_text:rgb(86, 68, 3);
@@ -41,7 +78,6 @@ li{
     --separator:rgba(107, 87, 1, 0.979);
     --section:rgba(107, 87, 1, 0.979);
 }
-/* Change the font to some epic looking theme */
 nav{
     background-color: var(--nav);
     font-style: italic;
