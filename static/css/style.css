@@ -93,6 +93,11 @@ nav{
     padding: 0;
     margin: 0;
 }
+.alert{
+    position: absolute;
+    z-index: 1000;
+    width: 100vw;
+}
 ul{
     display: flex;
     justify-content: space-around;
