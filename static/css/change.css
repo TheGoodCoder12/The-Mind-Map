@@ -15,3 +15,21 @@ form div{
     align-items: center;
     padding: 20px;
 }
+:root{
+    --bgcolor: red;
+    --color: white;
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+.dark-theme{
+    --bgcolor: rgb(204, 0, 255);
+    --color: black;
+}
+input{
+    border-radius: 6px;
+}
+body{
+    background-color: var(--bgcolor);
+    color: var(--color);
+}
