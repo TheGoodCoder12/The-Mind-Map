@@ -409,18 +409,27 @@ def search():
       cursor.execute("SELECT * FROM clues WHERE date = ? AND user_id = ?", [date, session['user_id']])
       cluesByDate = cursor.fetchall()
       cursor.close()
+      if not cluesByDate:
+        flash("No data found")
+        return redirect(url_for("search"))
       return render_template("search.html", cluesByDate=cluesByDate)
     # Display people related searches
     elif not date and people and not clues:
       cursor.execute("SELECT * FROM people WHERE name LIKE ? AND user_id = ?;", ['%' + people + '%', session['user_id']])
       peopleData = cursor.fetchall()
       cursor.close()
+      if not cluesByDate:
+        flash("No data found")
+        return redirect(url_for("search"))
       return render_template("search.html", peopleData=peopleData)
     # Display clue related searches from their description
     else:
       cursor.execute("SELECT * FROM clues WHERE description LIKE ? AND user_id = ?;", ['%' + clues + '%', session['user_id']])
       cluesInfo = cursor.fetchall()
       cursor.close()
+      if not cluesByDate:
+        flash("No data found")
+        return redirect(url_for("search"))
       return render_template("search.html", cluesInfo=cluesInfo)
 
 
