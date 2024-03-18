@@ -9,20 +9,23 @@
     padding-top: 25vh;
   }
   :root{
-    --bgcolor:blue;
-    --text:white;
-    --option_color:lime;
-    --option_text:purple;
+    --bgcolor:rgb(170,139,3);
+    --text:black;
+    --option_color:rgb(241,229,170);
+    --option_text:rgb(54,36,7);
   }
   .dark-theme{
-    --bgcolor:red;
-    --text:black;
-    --option_color:lime;
-    --option_text:purple;
+    --bgcolor:rgba(107,87,1,0.979);
+    --text:white;
+    --option_color:rgb(255,255,255);
+    --option_text:rgb(26,26,0);
   }
   select{
     background-color: var(--option_color);
     color: var(--option_text);
+  }
+  tr td{
+    color: var(--text);
   }
   h1{
     margin:50px;
