@@ -1,35 +1,41 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-.main{
+
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding-top: 30vh;
 }
-form div{
+
+form div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
 }
-:root{
-    --bgcolor: red;
-    --color: white;
+
+:root {
+    --bgcolor: rgb(170, 139, 3);
+    --text: black;
     font-size: 20px;
     font-weight: 600;
-    
+
 }
-.dark-theme{
-    --bgcolor: rgb(204, 0, 255);
-    --color: black;
+
+.dark-theme {
+    --bgcolor: rgba(107, 87, 1, 0.979);
+    --text: rgb(255, 255, 255);
 }
-input{
+
+input {
     border-radius: 6px;
 }
-body{
+
+body {
     background-color: var(--bgcolor);
     color: var(--color);
 }
