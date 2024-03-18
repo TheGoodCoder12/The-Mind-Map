@@ -31,7 +31,7 @@ li{
     .toggler{
         display: block;
         height: 5vh;
-        background-color: gray;
+        background-color: var(--nav);
         img{
             height: 2vh;
             width: 2vh;
