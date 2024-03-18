@@ -30,7 +30,11 @@ form div {
     --bgcolor: rgba(107, 87, 1, 0.979);
     --text: rgb(255, 255, 255);
 }
-
+.btn{
+    background-color: rgba(32,55,67,0.6);
+    color: white;
+    border: none;
+}
 input {
     border-radius: 6px;
 }

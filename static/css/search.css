@@ -27,6 +27,11 @@
   tr td{
     color: var(--text);
   }
+  .btn{
+    background-color: rgba(32,55,67,0.6);
+    color: white;
+    border: none;
+  }
   h1{
     margin:50px;
   }
